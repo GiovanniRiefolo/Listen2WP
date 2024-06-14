@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       L2wp Dev
- * Description:       Example block scaffolded with Create Block tool.
+ * Plugin Name:       Listen2WP
+ * Description:       Text 2 speach tool
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -24,7 +24,24 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function create_block_l2wp_dev_block_init() {
+add_action( 'init', function () {
 	register_block_type( __DIR__ . '/build' );
+} );
+
+/**
+ * Registering Block custom category
+ */
+function register_layout_category( $categories ) {
+	$categories[] = array(
+		'slug'  => 'accessibility',
+		'title' => 'Accessibility'
+	);
+	return $categories;
 }
-add_action( 'init', 'create_block_l2wp_dev_block_init' );
+
+if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
+	add_filter( 'block_categories_all', 'register_layout_category' );
+} else {
+	add_filter( 'block_categories', 'register_layout_category' );
+}
+

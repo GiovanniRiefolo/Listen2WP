@@ -30,9 +30,8 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit() {
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'L2wp Dev – hello from the editor!', 'l2wp-dev' ) }
-		</p>
-	);
+		<button onClick={playUtterance}>Read content</button>
+	)
 }

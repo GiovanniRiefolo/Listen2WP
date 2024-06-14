@@ -20,23 +20,9 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
+
 /* eslint-disable no-console */
-const synthesis
-let utterance
-
-if ('speechSynthesis' in window) {
-	synthesis = window.speechSynthesis;
-	utterance = new SpeechSynthesisUtterance;
-	
-	// TODO: get the post content
-	utterance.text = "Bella vez";
-	
-} else {
-	console.log('Text-to-speech not supported.');
-}
-
-const playUtterance = () => synthesis.speak(utterance)
-const stopUtterance = () => synthesis.stop(utterance)
-
+import playUtterance from
 console.log( 'Hello World! (from create-block-l2wp-dev block)' );
+
 /* eslint-enable no-console */
