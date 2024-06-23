@@ -22,7 +22,6 @@
 
 
 /* eslint-disable no-console */
-import playUtterance from
 console.log( 'Hello World! (from create-block-l2wp-dev block)' );
 
 /* eslint-enable no-console */

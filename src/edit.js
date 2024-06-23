@@ -20,6 +20,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from "./script";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,6 +33,12 @@ import './editor.scss';
 export default function Edit() {
 
 	return (
-		<button onClick={playUtterance}>Read content</button>
+			<>
+				<button onClick={playUtterance}>Read content edit</button>
+				<button onClick={pauseUtterance}>Pause reading edit</button>
+				<button onClick={resumeUtterance}>Resume reading edit</button>
+				<button onClick={cancelUtterance}>Stop reading edit</button>
+			</>
+
 	)
 }

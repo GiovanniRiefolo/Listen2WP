@@ -1,1 +1,1 @@
-(()=>{let e,o;"speechSynthesis"in window?(e=window.speechSynthesis,o=new SpeechSynthesisUtterance,o.text="Bella vez"):console.log("Text-to-speech not supported."),console.log("Hello World! (from create-block-l2wp-dev block)")})();
+console.log("Hello World! (from create-block-l2wp-dev block)");

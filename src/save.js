@@ -15,10 +15,11 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
+import {ReproductionBar} from './script';
 export default function save() {
 	return (
 		<div { ...useBlockProps.save() }>
-			<button onClick={() => playUtterance}>Read content</button>
+			<ReproductionBar />
 		</div>
 	);
 }
