@@ -3,6 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
+import { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -11,7 +12,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ColorPalette, TextControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -30,15 +32,35 @@ import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from ".
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit(props) {
+	const { attributes, setAttributes } = props;
+	const { buttonColor } = attributes;
+	const [playText, setPlayText] = useState('Play')
+	const [resumeText, setResumeText] = useState('Resume')
+	const [pauseText, setPauseText] = useState('Pause')
+	const [stopText, setStopText] = useState('Stop')
 
 	return (
-			<>
-				<button onClick={playUtterance}>Read content edit</button>
-				<button onClick={pauseUtterance}>Pause reading edit</button>
-				<button onClick={resumeUtterance}>Resume reading edit</button>
-				<button onClick={cancelUtterance}>Stop reading edit</button>
-			</>
+		<>
+			<InspectorControls>
+				<PanelBody title={__('Button Color', 'text-domain')}>
+					<ColorPalette
+						value={buttonColor}
+						onChange={(color) => setAttributes({ buttonColor: color })}
+					/>
 
+					<TextControl value={playText} onChange={(e) => setPlayText(e.value)} label="Play"/>
+					<TextControl value={pauseText} onChange={(e) => setPauseText(e.value)} label="Pause"/>
+					<TextControl value={resumeText} onChange={(e) => setResumeText(e.value)} label="Resume"/>
+					<TextControl value={stopText} onChange={(e) => setStopText(e.value)} label="Stop"/>
+				</PanelBody>
+			</InspectorControls>
+			<div { ...useBlockProps() }>
+				<button style={{backgroundColor: buttonColor}} onClick={playUtterance}>{playText}</button>
+				<button style={{backgroundColor: buttonColor}} onClick={pauseUtterance}>{pauseText}</button>
+				<button style={{backgroundColor: buttonColor}} onClick={resumeUtterance}>{resumeText}</button>
+				<button style={{backgroundColor: buttonColor}} onClick={cancelUtterance}>{stopText}</button>
+			</div>
+		</>
 	)
 }

@@ -15,11 +15,17 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-import {ReproductionBar} from './script';
-export default function save() {
+
+export default function save({attributes}) {
+	const { buttonColor, playText, resumeText, stopText, pauseText } = attributes;
+
 	return (
 		<div { ...useBlockProps.save() }>
-			<ReproductionBar />
+			<button className='play-button' style={{backgroundColor: buttonColor}}>{playText}</button>
+			<button className='pause-button' style={{backgroundColor: buttonColor}}>{resumeText}</button>
+			<button className='resume-button' style={{backgroundColor: buttonColor}}>{stopText}</button>
+			<button className='cancel-button' style={{backgroundColor: buttonColor}}>{pauseText}</button>
 		</div>
 	);
 }
+

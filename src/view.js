@@ -22,6 +22,19 @@
 
 
 /* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-l2wp-dev block)' );
+import { playUtterance, pauseUtterance, resumeUtterance, cancelUtterance } from './script';
+
+document.addEventListener('DOMContentLoaded', () => {
+	const playButton = document.querySelector('.play-button');
+	const pauseButton = document.querySelector('.pause-button');
+	const resumeButton = document.querySelector('.resume-button');
+	const cancelButton = document.querySelector('.cancel-button');
+
+	if (playButton) playButton.addEventListener('click', playUtterance);
+	if (pauseButton) pauseButton.addEventListener('click', pauseUtterance);
+	if (resumeButton) resumeButton.addEventListener('click', resumeUtterance);
+	if (cancelButton) cancelButton.addEventListener('click', cancelUtterance);
+});
+
 
 /* eslint-enable no-console */

@@ -12,6 +12,12 @@
     "html": false
   },
   "textdomain": "l2wp-dev",
+  "attributes": {
+    "buttonColor": {
+      "type": "string",
+      "default": "#FFFFFF"
+    }
+  },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
