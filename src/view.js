@@ -22,7 +22,7 @@
 
 
 /* eslint-disable no-console */
-import { playUtterance, pauseUtterance, resumeUtterance, cancelUtterance } from './script';
+import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from "./script";
 
 document.addEventListener('DOMContentLoaded', () => {
 	const playButton = document.querySelector('.play-button');

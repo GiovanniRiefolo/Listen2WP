@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ColorPalette, TextControl } from '@wordpress/components';
+import { useBlockProps, PanelColorSettings, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, ColorPalette, ColorPicker, TextControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -34,7 +34,7 @@ import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from ".
  */
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
-	const { buttonColor } = attributes;
+	const { textColor, backgroundColor } = attributes;
 	const [playText, setPlayText] = useState('Play')
 	const [resumeText, setResumeText] = useState('Resume')
 	const [pauseText, setPauseText] = useState('Pause')
@@ -42,13 +42,25 @@ export default function Edit(props) {
 
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody title={__('Button Color', 'text-domain')}>
-					<ColorPalette
-						value={buttonColor}
-						onChange={(color) => setAttributes({ buttonColor: color })}
-					/>
-
+			<InspectorControls group="styles">
+				<PanelColorSettings
+					title={__('Colori', 'l2wp-dev')}
+					initialOpen={true}
+					colorSettings={[
+						{
+							value: textColor,
+							onChange: (color) => setAttributes({textColor: color}),
+							label: __('Testo', 'l2wp-dev')
+						},
+						{
+							value: backgroundColor,
+							onChange: (color) => setAttributes({backgroundColor: color}),
+							label: __('Sfondo', 'l2wp-dev')
+						}
+					]} />
+			</InspectorControls>
+			<InspectorControls group="settings">
+				<PanelBody title={__('Settings','l2wp-dev')}>
 					<TextControl value={playText} onChange={(e) => setPlayText(e.value)} label="Play"/>
 					<TextControl value={pauseText} onChange={(e) => setPauseText(e.value)} label="Pause"/>
 					<TextControl value={resumeText} onChange={(e) => setResumeText(e.value)} label="Resume"/>
@@ -56,10 +68,10 @@ export default function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
-				<button style={{backgroundColor: buttonColor}} onClick={playUtterance}>{playText}</button>
-				<button style={{backgroundColor: buttonColor}} onClick={pauseUtterance}>{pauseText}</button>
-				<button style={{backgroundColor: buttonColor}} onClick={resumeUtterance}>{resumeText}</button>
-				<button style={{backgroundColor: buttonColor}} onClick={cancelUtterance}>{stopText}</button>
+				<button style={{backgroundColor: backgroundColor, color: textColor}} onClick={playUtterance}>{playText}</button>
+				<button style={{backgroundColor: backgroundColor, color: textColor}} onClick={pauseUtterance}>{pauseText}</button>
+				<button style={{backgroundColor: backgroundColor, color: textColor}} onClick={resumeUtterance}>{resumeText}</button>
+				<button style={{backgroundColor: backgroundColor, color: textColor}} onClick={cancelUtterance}>{stopText}</button>
 			</div>
 		</>
 	)

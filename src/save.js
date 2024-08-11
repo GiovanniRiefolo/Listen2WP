@@ -17,14 +17,15 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 
 export default function save({attributes}) {
-	const { buttonColor, playText, resumeText, stopText, pauseText } = attributes;
+	const { backgroundColor, textColor, playText, resumeText, stopText, pauseText } = attributes;
+	const blockProps = useBlockProps.save();
 
 	return (
-		<div { ...useBlockProps.save() }>
-			<button className='play-button' style={{backgroundColor: buttonColor}}>{playText}</button>
-			<button className='pause-button' style={{backgroundColor: buttonColor}}>{resumeText}</button>
-			<button className='resume-button' style={{backgroundColor: buttonColor}}>{stopText}</button>
-			<button className='cancel-button' style={{backgroundColor: buttonColor}}>{pauseText}</button>
+		<div { ...blockProps }>
+			<button className='play-button' style={{backgroundColor: backgroundColor, color: textColor}}>{playText}</button>
+			<button className='pause-button' style={{backgroundColor: backgroundColor, color: textColor}}>{resumeText}</button>
+			<button className='resume-button' style={{backgroundColor: backgroundColor, color: textColor}}>{stopText}</button>
+			<button className='cancel-button' style={{backgroundColor: backgroundColor, color: textColor}}>{pauseText}</button>
 		</div>
 	);
 }
