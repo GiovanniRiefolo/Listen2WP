@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import {useBlockProps} from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -17,15 +17,73 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 
 export default function save({attributes}) {
-	const { backgroundColor, textColor, playText, resumeText, stopText, pauseText } = attributes;
+	const {
+		textColor,
+		backgroundColor,
+		borderRadius,
+		borderColor,
+		playText,
+		resumeText,
+		stopText,
+		pauseText,
+		padding,
+		gap
+	} = attributes;
 	const blockProps = useBlockProps.save();
 
 	return (
-		<div { ...blockProps }>
-			<button className='play-button' style={{backgroundColor: backgroundColor, color: textColor}}>{playText}</button>
-			<button className='pause-button' style={{backgroundColor: backgroundColor, color: textColor}}>{resumeText}</button>
-			<button className='resume-button' style={{backgroundColor: backgroundColor, color: textColor}}>{stopText}</button>
-			<button className='cancel-button' style={{backgroundColor: backgroundColor, color: textColor}}>{pauseText}</button>
+		<div {...blockProps}>
+			<div
+				style={{display: 'flex', flexFlow: "row nowrap", rowGap: `${gap.rowGap || 0}`,  columnGap: `${gap.columnGap || 0}`}}>
+				<button
+					className='play-button'
+					style={{
+						backgroundColor: backgroundColor,
+						color: textColor,
+						borderColor: borderColor,
+						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderStyle: 'solid',
+						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+					}}>
+					{playText}
+				</button>
+				<button
+					className='pause-button'
+					style={{
+						backgroundColor: backgroundColor,
+						color: textColor,
+						borderColor: borderColor,
+						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderStyle: 'solid',
+						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+					}}>
+					{resumeText}
+				</button>
+				<button
+					className='resume-button'
+					style={{
+						backgroundColor: backgroundColor,
+						color: textColor,
+						borderColor: borderColor,
+						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderStyle: 'solid',
+						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+					}}>
+					{stopText}
+				</button>
+				<button
+					className='cancel-button'
+					style={{
+						backgroundColor: backgroundColor,
+						color: textColor,
+						borderColor: borderColor,
+						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderStyle: 'solid',
+						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+					}}>
+					{pauseText}
+				</button>
+			</div>
 		</div>
 	);
 }
