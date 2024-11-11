@@ -22,9 +22,7 @@ const getContent = () => {
 };
 
 export const playUtterance = () => {
-	const pageContent = getContent()
-	utterance.text = pageContent
-	console.log(utterance.text)
+	utterance.text = getContent()
 	if (synthesis && utterance) {
 		synthesis.speak(utterance);
 	}
@@ -32,7 +30,6 @@ export const playUtterance = () => {
 
 export const pauseUtterance = () => {
 	if (synthesis) {
-		console.log('Pausing utterance');
 		synthesis.pause();
 	} else {
 		console.log('synthesis not defined');
@@ -41,7 +38,6 @@ export const pauseUtterance = () => {
 
 export const resumeUtterance = () => {
 	if (synthesis) {
-		console.log('Resuming utterance');
 		synthesis.resume();
 	} else {
 		console.log('synthesis not defined');
@@ -50,7 +46,6 @@ export const resumeUtterance = () => {
 
 export const cancelUtterance = () => {
 	if (synthesis) {
-		console.log('Resuming utterance');
 		synthesis.cancel();
 	} else {
 		console.log('synthesis not defined');

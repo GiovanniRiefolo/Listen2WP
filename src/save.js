@@ -18,73 +18,85 @@ import {useBlockProps} from '@wordpress/block-editor';
 
 export default function save({attributes}) {
 	const {
-		textColor,
-		backgroundColor,
-		borderRadius,
-		borderColor,
-		playText,
-		resumeText,
-		stopText,
-		pauseText,
-		padding,
-		gap
+		textColor = '',
+        backgroundColor = '',
+        borderRadius = '12px',
+        borderColor = '',
+        padding = { top: '8px', right: '16px', bottom: '8px', left: '16px' },
+        rowGap = '30px',
+        columnGap = '0px',
+        playText = 'Play',
+        pauseText = 'Pause',
+        resumeText = 'Resume',
+        stopText = 'Stop',
 	} = attributes;
 	const blockProps = useBlockProps.save();
 
 	return (
 		<div {...blockProps}>
 			<div
-				style={{display: 'flex', flexFlow: "row nowrap", rowGap: `${gap.rowGap || 0}`,  columnGap: `${gap.columnGap || 0}`}}>
+				style={{
+					display: 'flex',
+					flexFlow: "row nowrap",
+					width: '100%',
+					rowGap: `${rowGap || '0'}`,
+					columnGap: `${columnGap || '0'}`
+				}}>
 				<button
-					className='play-button'
+					id='l2wp-play-button'
 					style={{
+						display: 'flex',
 						backgroundColor: backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}}>
 					{playText}
 				</button>
 				<button
-					className='pause-button'
+					id='l2wp-pause-button'
 					style={{
+						display: 'flex',
 						backgroundColor: backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+					}}>
+					{pauseText}
+				</button>
+				<button
+					id='l2wp-resume-button'
+					style={{
+						display: 'flex',
+						backgroundColor: backgroundColor,
+						color: textColor,
+						borderColor,
+						borderRadius,
+						borderStyle: 'solid',
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}}>
 					{resumeText}
 				</button>
 				<button
-					className='resume-button'
+					id='l2wp-cancel-button'
 					style={{
+						display: 'flex',
 						backgroundColor: backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}}>
 					{stopText}
-				</button>
-				<button
-					className='cancel-button'
-					style={{
-						backgroundColor: backgroundColor,
-						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
-						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
-					}}>
-					{pauseText}
 				</button>
 			</div>
 		</div>
 	);
 }
+
 

@@ -25,15 +25,17 @@
 import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from "./script";
 
 document.addEventListener('DOMContentLoaded', () => {
-	const playButton = document.querySelector('.play-button');
-	const pauseButton = document.querySelector('.pause-button');
-	const resumeButton = document.querySelector('.resume-button');
-	const cancelButton = document.querySelector('.cancel-button');
+	const playButton = document.getElementById('l2wp-play-button');
+	const pauseButton = document.getElementById('l2wp-pause-button');
+	const resumeButton = document.getElementById('l2wp-resume-button');
+	const cancelButton = document.getElementById('l2wp-cancel-button');
 
 	if (playButton) playButton.addEventListener('click', playUtterance);
 	if (pauseButton) pauseButton.addEventListener('click', pauseUtterance);
 	if (resumeButton) resumeButton.addEventListener('click', resumeUtterance);
 	if (cancelButton) cancelButton.addEventListener('click', cancelUtterance);
+
+	cancelUtterance()
 });
 
 

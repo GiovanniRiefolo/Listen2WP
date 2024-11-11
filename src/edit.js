@@ -13,10 +13,9 @@ import {__} from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps, PanelColorSettings, InspectorControls} from '@wordpress/block-editor';
-import {ColorPicker, PanelBody, TextControl} from '@wordpress/components';
+import {ColorPicker, PanelBody, RangeControl, TextControl} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
-import { __experimentalDimensionControl as DimensionControl } from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -36,22 +35,20 @@ import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from ".
  */
 export default function Edit(props) {
 	const {attributes, setAttributes} = props;
-	const [paddings] = useState({
-		top: '8px',
-		left: '16px',
-		right: '8px',
-		bottom: '16px',
-	})
-	const [gaps] = useState({
-		rowGap: '0px',
-		columnGap: '0px'
-	})
-	const {textColor, backgroundColor, borderRadius, borderColor, padding = paddings, gap = gaps} = attributes;
-	const [playText, setPlayText] = useState('Play')
-	const [resumeText, setResumeText] = useState('Resume')
-	const [pauseText, setPauseText] = useState('Pause')
-	const [stopText, setStopText] = useState('Stop')
 
+	const {
+		textColor = '',
+		backgroundColor = '',
+		borderRadius = '0px',
+		borderColor = '',
+		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
+		rowGap = '0px',
+		columnGap = '0px',
+		playText = 'Play',
+		pauseText = 'Pause',
+		resumeText = 'Resume',
+		stopText = 'Stop'
+	} = attributes;
 
 	return (
 		<>
@@ -77,7 +74,7 @@ export default function Edit(props) {
 						}
 					]}/>
 				<PanelBody title={__('Bordi', 'l2wp-dev')}>
-					<UnitControl
+					<UnitContrfol
 						label={__('Border Radius', 'l2wp-dev')}
 						value={borderRadius}
 						onChange={(newRadius) => setAttributes({borderRadius: newRadius})}
@@ -102,64 +99,94 @@ export default function Edit(props) {
 					/>
 				</PanelBody>
 				<PanelBody title={__('Dimensions', 'l2wp-dev')}>
-					<BoxControl
-						label={__('Padding', 'l2wp-dev')}
-						values={padding}
-						splitOnAxis={true}
-						onChange={(newPadding) => setAttributes({padding: newPadding})}
-						units={[
-							{value: 'px', label: 'px', default: 0},
-							{value: '%', label: '%', default: 10},
-							{value: 'em', label: 'em', default: 0},
-						]}
-					/>
+					<RangeControl
+                        label="Row Gap"
+                        value={parseInt(rowGap)}
+                        onChange={(value) => setAttributes({ rowGap: `${value}px` })}
+                        min={0}
+                        max={100}
+                    />
+                    <RangeControl
+                        label="Column Gap"
+                        value={parseInt(columnGap)}
+                        onChange={(value) => setAttributes({ columnGap: `${value}px` })}
+                        min={0}
+                        max={100}
+                    />
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="settings">
 				<PanelBody title={__('Labels', 'l2wp-dev')}>
-					<TextControl value={playText} onChange={(e) => setPlayText(e.value)} label="Play"/>
-					<TextControl value={pauseText} onChange={(e) => setPauseText(e.value)} label="Pause"/>
-					<TextControl value={resumeText} onChange={(e) => setResumeText(e.value)} label="Resume"/>
-					<TextControl value={stopText} onChange={(e) => setStopText(e.value)} label="Stop"/>
+					<TextControl
+						label="Play Text"
+						value={playText}
+						onChange={(value) => setAttributes({playText: value})}
+					/>
+					<TextControl
+						label="Pause Text"
+						value={pauseText}
+						onChange={(value) => setAttributes({pauseText: value})}
+					/>
+					<TextControl
+						label="Resume Text"
+						value={resumeText}
+						onChange={(value) => setAttributes({resumeText: value})}
+					/>
+					<TextControl
+						label="Stop Text"
+						value={stopText}
+						onChange={(value) => setAttributes({stopText: value})}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<div
-					style={{display: 'flex', flexFlow: "row nowrap", rowGap: `${gap.rowGap || 0}`,  columnGap: `${gap.columnGap || 0}`}}>
-					<button style={{
-						backgroundColor: backgroundColor,
+					style={{
+						display: 'flex',
+						flexFlow: "row nowrap",
+						width: '100%',
+						rowGap: `${rowGap || '0'}`,
+						columnGap: `${columnGap || '0'}`
+					}}>
+					<button id='l2wp-play-button' style={{
+						display: 'flex',
+						backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}} onClick={playUtterance}>{playText}</button>
-					<button style={{
-						backgroundColor: backgroundColor,
+					<button id='l2wp-pause-button' style={{
+						display: 'flex',
+						backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}} onClick={pauseUtterance}>{pauseText}</button>
-					<button style={{
-						backgroundColor: backgroundColor,
+					<button id='l2wp-resume-button' style={{
+						display: 'flex',
+						backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}} onClick={resumeUtterance}>{resumeText}</button>
-					<button style={{
-						backgroundColor: backgroundColor,
+					<button id='l2wp-cancel-button' style={{
+						display: 'flex',
+						backgroundColor,
 						color: textColor,
-						borderColor: borderColor,
-						borderRadius: borderRadius ? `${borderRadius}` : '0',
+						borderColor,
+						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding?.top || 0} ${padding?.right || 0} ${padding?.bottom || 0} ${padding?.left || 0}`,
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}} onClick={cancelUtterance}>{stopText}</button>
 				</div>
 			</div>
 		</>
 	)
 }
+
