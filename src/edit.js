@@ -12,7 +12,7 @@ import {__} from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {useBlockProps, PanelColorSettings, InspectorControls} from '@wordpress/block-editor';
+import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
 import {ColorPicker, PanelBody, RangeControl, TextControl} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
@@ -37,18 +37,19 @@ export default function Edit(props) {
 	const {attributes, setAttributes} = props;
 
 	const {
-		textColor = '',
-		backgroundColor = '',
-		borderRadius = '0px',
-		borderColor = '',
-		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
-		rowGap = '0px',
-		columnGap = '0px',
-		playText = 'Play',
-		pauseText = 'Pause',
-		resumeText = 'Resume',
-		stopText = 'Stop'
+		textColor = attributes.textColor || '',
+		backgroundColor = attributes.backgroundColor || '',
+		borderRadius = attributes.borderRadius || '0px',
+		borderColor = attributes.borderColor || '',
+		padding = attributes.padding || {top: '8px', right: '16px', bottom: '8px', left: '16px'},
+		rowGap = attributes.rowGap || '0px',
+		columnGap = attributes.columnGap || '0px',
+		playText = attributes.playText || 'Play',
+		pauseText = attributes.pauseText || 'Pause',
+		resumeText = attributes.resumeText || 'Resume',
+		stopText = attributes.stopText || 'Stop',
 	} = attributes;
+
 
 	return (
 		<>
@@ -72,9 +73,14 @@ export default function Edit(props) {
 							onChange: (color) => setAttributes({borderColor: color}),
 							label: __('Bordo', 'l2wp-dev')
 						}
-					]}/>
+					]}>
+					<ContrastChecker
+						textColor={textColor}
+						backgroundColor={backgroundColor}
+					/>
+				</PanelColorSettings>
 				<PanelBody title={__('Bordi', 'l2wp-dev')}>
-					<UnitContrfol
+					<UnitControl
 						label={__('Border Radius', 'l2wp-dev')}
 						value={borderRadius}
 						onChange={(newRadius) => setAttributes({borderRadius: newRadius})}
@@ -85,7 +91,7 @@ export default function Edit(props) {
 						]}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Padding', 'l2wp-dev')}>
+				<PanelBody title={__('Dimensions', 'l2wp-dev')}>
 					<BoxControl
 						label={__('Padding', 'l2wp-dev')}
 						values={padding}
@@ -97,22 +103,20 @@ export default function Edit(props) {
 							{value: 'em', label: 'em', default: 0},
 						]}
 					/>
-				</PanelBody>
-				<PanelBody title={__('Dimensions', 'l2wp-dev')}>
 					<RangeControl
-                        label="Row Gap"
-                        value={parseInt(rowGap)}
-                        onChange={(value) => setAttributes({ rowGap: `${value}px` })}
-                        min={0}
-                        max={100}
-                    />
-                    <RangeControl
-                        label="Column Gap"
-                        value={parseInt(columnGap)}
-                        onChange={(value) => setAttributes({ columnGap: `${value}px` })}
-                        min={0}
-                        max={100}
-                    />
+						label="Row Gap"
+						value={parseInt(rowGap)}
+						onChange={(value) => setAttributes({rowGap: `${value}px`})}
+						min={0}
+						max={100}
+					/>
+					<RangeControl
+						label="Column Gap"
+						value={parseInt(columnGap)}
+						onChange={(value) => setAttributes({columnGap: `${value}px`})}
+						min={0}
+						max={100}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="settings">

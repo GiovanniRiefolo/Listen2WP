@@ -13,9 +13,54 @@
   },
   "textdomain": "l2wp-dev",
   "attributes": {
-    "buttonColor": {
+    "textColor": {
       "type": "string",
-      "default": "#FFFFFF"
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "0px"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": ""
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "8px",
+        "right": "16px",
+        "bottom": "8px",
+        "left": "16px"
+      }
+    },
+    "rowGap": {
+      "type": "string",
+      "default": "0px"
+    },
+    "columnGap": {
+      "type": "string",
+      "default": "0px"
+    },
+    "playText": {
+      "type": "string",
+      "default": "Play"
+    },
+    "pauseText": {
+      "type": "string",
+      "default": "Pause"
+    },
+    "resumeText": {
+      "type": "string",
+      "default": "Resume"
+    },
+    "stopText": {
+      "type": "string",
+      "default": "Stop"
     }
   },
   "editorScript": "file:./index.js",

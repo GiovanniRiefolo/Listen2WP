@@ -19,16 +19,16 @@ import {useBlockProps} from '@wordpress/block-editor';
 export default function save({attributes}) {
 	const {
 		textColor = '',
-        backgroundColor = '',
-        borderRadius = '12px',
-        borderColor = '',
-        padding = { top: '8px', right: '16px', bottom: '8px', left: '16px' },
-        rowGap = '30px',
-        columnGap = '0px',
-        playText = 'Play',
-        pauseText = 'Pause',
-        resumeText = 'Resume',
-        stopText = 'Stop',
+		backgroundColor = '',
+		borderRadius = '0px',
+		borderColor = '',
+		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
+		rowGap = '0px',
+		columnGap = '0px',
+		playText = 'Play',
+		pauseText = 'Pause',
+		resumeText = 'Resume',
+		stopText = 'Stop',
 	} = attributes;
 	const blockProps = useBlockProps.save();
 
