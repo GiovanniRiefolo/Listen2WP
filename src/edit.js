@@ -13,7 +13,7 @@ import {__} from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
-import {ColorPicker, PanelBody, RangeControl, TextControl} from '@wordpress/components';
+import {ColorPicker, PanelBody, RangeControl, TextControl, BorderBoxControl} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
 /**
@@ -42,6 +42,7 @@ export default function Edit(props) {
 		borderRadius = attributes.borderRadius || '0px',
 		borderColor = attributes.borderColor || '',
 		padding = attributes.padding || {top: '8px', right: '16px', bottom: '8px', left: '16px'},
+		margin = attributes.margin || {top: '0px', right: '0px', bottom: '0px', left: '0px'},
 		rowGap = attributes.rowGap || '0px',
 		columnGap = attributes.columnGap || '0px',
 		playText = attributes.playText || 'Play',
@@ -80,6 +81,7 @@ export default function Edit(props) {
 					/>
 				</PanelColorSettings>
 				<PanelBody title={__('Bordi', 'l2wp-dev')}>
+
 					<UnitControl
 						label={__('Border Radius', 'l2wp-dev')}
 						value={borderRadius}
@@ -92,6 +94,17 @@ export default function Edit(props) {
 					/>
 				</PanelBody>
 				<PanelBody title={__('Dimensions', 'l2wp-dev')}>
+					<BoxControl
+						label={__('Margin', 'l2wp-dev')}
+						values={margin}
+						splitOnAxis={true}
+						onChange={(newMargin) => setAttributes({margin: newMargin})}
+						units={[
+							{value: 'px', label: 'px', default: 0},
+							{value: '%', label: '%', default: 10},
+							{value: 'em', label: 'em', default: 0},
+						]}
+					/>
 					<BoxControl
 						label={__('Padding', 'l2wp-dev')}
 						values={padding}
@@ -150,7 +163,8 @@ export default function Edit(props) {
 						flexFlow: "row nowrap",
 						width: '100%',
 						rowGap: `${rowGap || '0'}`,
-						columnGap: `${columnGap || '0'}`
+						columnGap: `${columnGap || '0'}`,
+						margin: `${margin.top} ${margin.right} ${margin.bottom} ${margin.left}`
 					}}>
 					<button id='l2wp-play-button' style={{
 						display: 'flex',

@@ -23,6 +23,7 @@ export default function save({attributes}) {
 		borderRadius = '0px',
 		borderColor = '',
 		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
+		margin = {top: '0px', right: '0px', bottom: '0px', left: '0px'},
 		rowGap = '0px',
 		columnGap = '0px',
 		playText = 'Play',
@@ -40,7 +41,8 @@ export default function save({attributes}) {
 					flexFlow: "row nowrap",
 					width: '100%',
 					rowGap: `${rowGap || '0'}`,
-					columnGap: `${columnGap || '0'}`
+					columnGap: `${columnGap || '0'}`,
+					margin: `${margin.top} ${margin.right} ${margin.bottom} ${margin.left}`
 				}}>
 				<button
 					id='l2wp-play-button'
