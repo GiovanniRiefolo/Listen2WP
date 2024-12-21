@@ -21,13 +21,14 @@
       "type": "string",
       "default": ""
     },
-    "borderRadius": {
-      "type": "string",
-      "default": "0px"
-    },
-    "borderColor": {
-      "type": "string",
-      "default": ""
+    "border": {
+      "type": "object",
+      "default": {
+        "color": "transparent",
+        "width": "0px",
+        "style": "solid",
+        "radius": "0px"
+      }
     },
     "padding": {
       "type": "object",
@@ -36,6 +37,15 @@
         "right": "16px",
         "bottom": "8px",
         "left": "16px"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
       }
     },
     "rowGap": {

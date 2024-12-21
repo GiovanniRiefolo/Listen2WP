@@ -20,8 +20,7 @@ export default function save({attributes}) {
 	const {
 		textColor = '',
 		backgroundColor = '',
-		borderRadius = '0px',
-		borderColor = '',
+		border,
 		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
 		margin = {top: '0px', right: '0px', bottom: '0px', left: '0px'},
 		rowGap = '0px',
@@ -48,12 +47,16 @@ export default function save({attributes}) {
 					id='l2wp-play-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						borderTopWidth: border?.top || '0px',
+						borderRightWidth: border?.right || '0px',
+						borderBottomWidth: border?.bottom || '0px',
+						borderLeftWidth: border?.left || '0px',
+						borderStyle: border?.borderStyle || 'solid',
+						borderColor: border?.borderColor || 'transparent',
+						borderRadius: border?.borderRadius || '0',
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{playText}
 				</button>
@@ -61,12 +64,16 @@ export default function save({attributes}) {
 					id='l2wp-pause-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						borderTopWidth: border?.top || '0px',
+						borderRightWidth: border?.right || '0px',
+						borderBottomWidth: border?.bottom || '0px',
+						borderLeftWidth: border?.left || '0px',
+						borderStyle: border?.borderStyle || 'solid',
+						borderColor: border?.borderColor || 'transparent',
+						borderRadius: border?.borderRadius || '0',
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{pauseText}
 				</button>
@@ -74,12 +81,16 @@ export default function save({attributes}) {
 					id='l2wp-resume-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						borderTopWidth: border?.top || '0px',
+						borderRightWidth: border?.right || '0px',
+						borderBottomWidth: border?.bottom || '0px',
+						borderLeftWidth: border?.left || '0px',
+						borderStyle: border?.borderStyle || 'solid',
+						borderColor: border?.borderColor || 'transparent',
+						borderRadius: border?.borderRadius || '0',
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{resumeText}
 				</button>
@@ -87,12 +98,16 @@ export default function save({attributes}) {
 					id='l2wp-cancel-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						borderTopWidth: border?.top || '0px',
+						borderRightWidth: border?.right || '0px',
+						borderBottomWidth: border?.bottom || '0px',
+						borderLeftWidth: border?.left || '0px',
+						borderStyle: border?.borderStyle || 'solid',
+						borderColor: border?.borderColor || 'transparent',
+						borderRadius: border?.borderRadius || '0',
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{stopText}
 				</button>
