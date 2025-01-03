@@ -1,1 +1,824 @@
-(()=>{"use strict";var e,o={873:()=>{const e=window.React,o=window.wp.blocks,l=window.wp.i18n,t=window.wp.blockEditor,r=window.wp.components;let n,s;"speechSynthesis"in window?(n=window.speechSynthesis,s=new SpeechSynthesisUtterance):console.log("Text-to-speech not supported.");const d=()=>{s.text=(()=>{const e=document.querySelector(".entry-content");if(e){const o=e.querySelectorAll(":scope > :not(.wp-block-rdev-l2wp)"),l=[];return o.forEach((e=>l.push(e.innerText||e.textContent))),l.join(" ")}return console.log("Can't find anything to read"),"Non riesco a leggere il contenuto"})(),n&&s&&n.speak(s)},a=()=>{n?n.pause():console.log("synthesis not defined")},i=()=>{n?n.resume():console.log("synthesis not defined")},p=()=>{n?n.cancel():console.log("synthesis not defined")},c=window.ReactJSXRuntime;(0,o.registerBlockType)("rdev/l2wp",{icon:{src:(0,e.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 512 512"},(0,e.createElement)("path",{d:"M192 416c0-17.7-14.3-32-32-32H64c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32H448c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H309.3c-6.9 0-13.7 2.2-19.2 6.4L192 464V416zM64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h64 32v32 48c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM192 128c-8.8 0-16 7.2-16 16s7.2 16 16 16h48V272c0 8.8 7.2 16 16 16s16-7.2 16-16V160h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H256 192z"}))},edit:function(e){const{attributes:o,setAttributes:n}=e,{textColor:s="#000000",backgroundColor:u="#ffffff",borderRadius:x="12px",borderColor:b="#cccccc",padding:f={top:"8px",right:"16px",bottom:"8px",left:"16px"},columnGap:h={right:"0px",left:"0px"},playText:g="Play",pauseText:w="Pause",resumeText:v="Resume",stopText:C="Stop",fontFamily:y="sans-serif",fontWeight:m="normal",fontSize:j="16px"}=o;return(0,c.jsxs)(c.Fragment,{children:[(0,c.jsxs)(t.InspectorControls,{group:"styles",children:[(0,c.jsx)(t.PanelColorSettings,{title:(0,l.__)("Colors","l2wp-dev"),initialOpen:!0,colorSettings:[{value:s,onChange:e=>n({textColor:e}),label:(0,l.__)("Text","l2wp-dev")},{value:u,onChange:e=>n({backgroundColor:e}),label:(0,l.__)("Background","l2wp-dev")},{value:b,onChange:e=>n({borderColor:e}),label:(0,l.__)("Border","l2wp-dev")}],children:(0,c.jsx)(t.ContrastChecker,{textColor:s,backgroundColor:u})}),(0,c.jsx)(r.PanelBody,{title:(0,l.__)("Borders","l2wp-dev"),children:(0,c.jsx)(r.__experimentalUnitControl,{label:(0,l.__)("Border Radius","l2wp-dev"),value:x,onChange:e=>n({borderRadius:e}),units:[{value:"px",label:"px",default:0},{value:"%",label:"%",default:0},{value:"em",label:"em",default:0}]})}),(0,c.jsx)(r.PanelBody,{title:(0,l.__)("Padding","l2wp-dev"),children:(0,c.jsx)(r.__experimentalBoxControl,{label:(0,l.__)("Padding","l2wp-dev"),values:f,splitOnAxis:!0,onChange:e=>n({padding:e}),units:[{value:"px",label:"px",default:0},{value:"%",label:"%",default:0},{value:"em",label:"em",default:0}]})}),(0,c.jsx)(r.PanelBody,{title:(0,l.__)("Dimensions","l2wp-dev"),children:(0,c.jsx)(r.__experimentalBoxControl,{label:(0,l.__)("Block Spaces","l2wp-dev"),values:h,splitOnAxis:!0,onChange:e=>{console.log(e),n({columnGap:e}),console.log(h)},sides:"horizontal",units:[{value:"px",label:"px",default:0},{value:"%",label:"%",default:0},{value:"em",label:"em",default:0}]})})]}),(0,c.jsx)(t.InspectorControls,{group:"settings",children:(0,c.jsxs)(r.PanelBody,{title:(0,l.__)("Labels","l2wp-dev"),children:[(0,c.jsx)(r.TextControl,{label:"Play Text",value:g,onChange:e=>n({playText:e})}),(0,c.jsx)(r.TextControl,{label:"Pause Text",value:w,onChange:e=>n({pauseText:e})}),(0,c.jsx)(r.TextControl,{label:"Resume Text",value:v,onChange:e=>n({resumeText:e})}),(0,c.jsx)(r.TextControl,{label:"Stop Text",value:C,onChange:e=>n({stopText:e})})]})}),(0,c.jsx)("div",{...(0,t.useBlockProps)(),children:(0,c.jsxs)("div",{style:{display:"flex",flexFlow:"row nowrap",width:"100%",columnGap:h.left},children:[(0,c.jsx)("button",{id:"l2wp-play-button",style:{display:"flex",backgroundColor:u,color:s,borderColor:b,borderRadius:x,borderStyle:"solid",padding:`${f.top} ${f.right} ${f.bottom} ${f.left}`},onClick:d,children:g}),(0,c.jsx)("button",{id:"l2wp-pause-button",style:{display:"flex",backgroundColor:u,color:s,borderColor:b,borderRadius:x,borderStyle:"solid",padding:`${f.top} ${f.right} ${f.bottom} ${f.left}`},onClick:a,children:w}),(0,c.jsx)("button",{id:"l2wp-resume-button",style:{display:"flex",backgroundColor:u,color:s,borderColor:b,borderRadius:x,borderStyle:"solid",padding:`${f.top} ${f.right} ${f.bottom} ${f.left}`},onClick:i,children:v}),(0,c.jsx)("button",{id:"l2wp-cancel-button",style:{display:"flex",backgroundColor:u,color:s,borderColor:b,borderRadius:x,borderStyle:"solid",padding:`${f.top} ${f.right} ${f.bottom} ${f.left}`},onClick:p,children:C})]})})]})},save:function({attributes:e}){const{textColor:o="#000000",backgroundColor:l="#ffffff",borderRadius:r="12px",borderColor:n="#cccccc",padding:s={top:"8px",right:"16px",bottom:"8px",left:"16px"},columnGap:d={right:"0px",left:"0px"},playText:a="Play",pauseText:i="Pause",resumeText:p="Resume",stopText:u="Stop",fontFamily:x="Arial, sans-serif",fontWeight:b="normal",fontSize:f="16px"}=e,h=t.useBlockProps.save();return(0,c.jsx)("div",{...h,children:(0,c.jsxs)("div",{style:{display:"flex",flexFlow:"row nowrap",width:"100%",columnGap:d.left},children:[(0,c.jsx)("button",{id:"l2wp-play-button",style:{display:"flex",backgroundColor:l,color:o,borderColor:n,borderRadius:r,borderStyle:"solid",padding:`${s.top} ${s.right} ${s.bottom} ${s.left}`},children:a}),(0,c.jsx)("button",{id:"l2wp-pause-button",style:{display:"flex",backgroundColor:l,color:o,borderColor:n,borderRadius:r,borderStyle:"solid",padding:`${s.top} ${s.right} ${s.bottom} ${s.left}`},children:i}),(0,c.jsx)("button",{id:"l2wp-resume-button",style:{display:"flex",backgroundColor:l,color:o,borderColor:n,borderRadius:r,borderStyle:"solid",padding:`${s.top} ${s.right} ${s.bottom} ${s.left}`},children:p}),(0,c.jsx)("button",{id:"l2wp-cancel-button",style:{display:"flex",backgroundColor:l,color:o,borderColor:n,borderRadius:r,borderStyle:"solid",padding:`${s.top} ${s.right} ${s.bottom} ${s.left}`},children:u})]})})}})}},l={};function t(e){var r=l[e];if(void 0!==r)return r.exports;var n=l[e]={exports:{}};return o[e](n,n.exports,t),n.exports}t.m=o,e=[],t.O=(o,l,r,n)=>{if(!l){var s=1/0;for(p=0;p<e.length;p++){l=e[p][0],r=e[p][1],n=e[p][2];for(var d=!0,a=0;a<l.length;a++)(!1&n||s>=n)&&Object.keys(t.O).every((e=>t.O[e](l[a])))?l.splice(a--,1):(d=!1,n<s&&(s=n));if(d){e.splice(p--,1);var i=r();void 0!==i&&(o=i)}}return o}n=n||0;for(var p=e.length;p>0&&e[p-1][2]>n;p--)e[p]=e[p-1];e[p]=[l,r,n]},t.o=(e,o)=>Object.prototype.hasOwnProperty.call(e,o),(()=>{var e={57:0,350:0};t.O.j=o=>0===e[o];var o=(o,l)=>{var r,n,s=l[0],d=l[1],a=l[2],i=0;if(s.some((o=>0!==e[o]))){for(r in d)t.o(d,r)&&(t.m[r]=d[r]);if(a)var p=a(t)}for(o&&o(l);i<s.length;i++)n=s[i],t.o(e,n)&&e[n]&&e[n][0](),e[n]=0;return t.O(p)},l=self.webpackChunkl2wp_dev=self.webpackChunkl2wp_dev||[];l.forEach(o.bind(null,0)),l.push=o.bind(null,l.push.bind(l))})();var r=t.O(void 0,[350],(()=>t(873)));r=t.O(r)})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/edit.js":
+/*!*********************!*\
+  !*** ./src/edit.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./script */ "./src/script.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+/**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+
+
+
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+
+
+
+
+
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+
+
+
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @return {Element} Element to render.
+ */
+
+function Edit(props) {
+  const {
+    attributes,
+    setAttributes
+  } = props;
+  const {
+    textColor = '#000000',
+    backgroundColor = '#ffffff',
+    borderRadius = '12px',
+    borderColor = '#ffffff',
+    borderStyle = 'solid',
+    borderWidth = '0px',
+    padding = {
+      top: '8px',
+      right: '16px',
+      bottom: '8px',
+      left: '16px'
+    },
+    columnGap = {
+      right: '0px',
+      left: '0px'
+    },
+    playText = 'Play',
+    pauseText = 'Pause',
+    resumeText = 'Resume',
+    stopText = 'Stop',
+    fontFamily = 'sans-serif',
+    fontWeight = 'normal',
+    fontSize = '16px'
+  } = attributes;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+      group: "styles",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors', 'l2wp-dev'),
+        initialOpen: true,
+        colorSettings: [{
+          value: textColor,
+          onChange: color => setAttributes({
+            textColor: color
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text', 'l2wp-dev')
+        }, {
+          value: backgroundColor,
+          onChange: color => setAttributes({
+            backgroundColor: color
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'l2wp-dev')
+        }],
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ContrastChecker, {
+          textColor: textColor,
+          backgroundColor: backgroundColor
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Borders', 'l2wp-dev'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border Radius', 'l2wp-dev'),
+          value: borderRadius,
+          onChange: newRadius => setAttributes({
+            borderRadius: newRadius
+          }),
+          units: [{
+            value: 'px',
+            label: 'px',
+            default: 0
+          }, {
+            value: '%',
+            label: '%',
+            default: 0
+          }, {
+            value: 'em',
+            label: 'em',
+            default: 0
+          }]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBorderControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border', 'l2wp-dev'),
+          value: {
+            style: borderStyle,
+            width: borderWidth,
+            color: borderColor
+          },
+          onChange: newBorder => {
+            setAttributes({
+              borderStyle: newBorder.style,
+              borderWidth: newBorder.width,
+              borderColor: newBorder.color
+            });
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding', 'l2wp-dev'),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBoxControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding', 'l2wp-dev'),
+          values: padding,
+          splitOnAxis: true,
+          onChange: newPadding => setAttributes({
+            padding: newPadding
+          }),
+          units: [{
+            value: 'px',
+            label: 'px',
+            default: 0
+          }, {
+            value: '%',
+            label: '%',
+            default: 0
+          }, {
+            value: 'em',
+            label: 'em',
+            default: 0
+          }]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dimensions', 'l2wp-dev'),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBoxControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Block Spaces', 'l2wp-dev'),
+          values: columnGap,
+          splitOnAxis: true,
+          onChange: newGap => {
+            console.log(newGap);
+            setAttributes({
+              columnGap: newGap
+            });
+            console.log(columnGap);
+          },
+          sides: "horizontal",
+          units: [{
+            value: 'px',
+            label: 'px',
+            default: 0
+          }, {
+            value: '%',
+            label: '%',
+            default: 0
+          }, {
+            value: 'em',
+            label: 'em',
+            default: 0
+          }]
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+      group: "settings",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Labels', 'l2wp-dev'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: "Play Text",
+          value: playText,
+          onChange: value => setAttributes({
+            playText: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: "Pause Text",
+          value: pauseText,
+          onChange: value => setAttributes({
+            pauseText: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: "Resume Text",
+          value: resumeText,
+          onChange: value => setAttributes({
+            resumeText: value
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: "Stop Text",
+          value: stopText,
+          onChange: value => setAttributes({
+            stopText: value
+          })
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        style: {
+          display: 'flex',
+          flexFlow: "row nowrap",
+          width: '100%',
+          columnGap: columnGap.left
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          id: "l2wp-play-button",
+          style: {
+            display: 'flex',
+            backgroundColor,
+            color: textColor,
+            borderColor,
+            borderRadius,
+            borderStyle,
+            borderWidth,
+            padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+          },
+          onClick: _script__WEBPACK_IMPORTED_MODULE_5__.playUtterance,
+          children: playText
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          id: "l2wp-pause-button",
+          style: {
+            display: 'flex',
+            backgroundColor,
+            color: textColor,
+            borderColor,
+            borderRadius,
+            borderStyle,
+            borderWidth,
+            padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+          },
+          onClick: _script__WEBPACK_IMPORTED_MODULE_5__.pauseUtterance,
+          children: pauseText
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          id: "l2wp-resume-button",
+          style: {
+            display: 'flex',
+            backgroundColor,
+            color: textColor,
+            borderColor,
+            borderRadius,
+            borderStyle,
+            borderWidth,
+            padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+          },
+          onClick: _script__WEBPACK_IMPORTED_MODULE_5__.resumeUtterance,
+          children: resumeText
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          id: "l2wp-cancel-button",
+          style: {
+            display: 'flex',
+            backgroundColor,
+            color: textColor,
+            borderColor,
+            borderRadius,
+            borderStyle,
+            borderWidth,
+            padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+          },
+          onClick: _script__WEBPACK_IMPORTED_MODULE_5__.cancelUtterance,
+          children: stopText
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
+
+/**
+ * Registers a new block provided a unique name and an object defining its behavior.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * All files containing `style` keyword are bundled together. The code used
+ * gets applied both to the front of your site and to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
+  icon: {
+    src: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M192 416c0-17.7-14.3-32-32-32H64c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32H448c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H309.3c-6.9 0-13.7 2.2-19.2 6.4L192 464V416zM64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h64 32v32 48c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM192 128c-8.8 0-16 7.2-16 16s7.2 16 16 16h48V272c0 8.8 7.2 16 16 16s16-7.2 16-16V160h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H256 192z"
+    }))
+  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+});
+
+/***/ }),
+
+/***/ "./src/save.js":
+/*!*********************!*\
+  !*** ./src/save.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+
+
+/**
+ * The save function defines the way in which the different attributes should
+ * be combined into the final markup, which is then serialized by the block
+ * editor into `post_content`.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
+ *
+ * @return {Element} Element to render.
+ */
+
+function save({
+  attributes
+}) {
+  const {
+    textColor = '#000000',
+    backgroundColor = '#ffffff',
+    borderRadius = '12px',
+    borderColor = '#ffffff',
+    borderStyle = 'solid',
+    borderWidth = '0px',
+    padding = {
+      top: '8px',
+      right: '16px',
+      bottom: '8px',
+      left: '16px'
+    },
+    columnGap = {
+      right: '0px',
+      left: '0px'
+    },
+    playText = 'Play',
+    pauseText = 'Pause',
+    resumeText = 'Resume',
+    stopText = 'Stop',
+    fontFamily = 'Arial, sans-serif',
+    fontWeight = 'normal',
+    fontSize = '16px'
+  } = attributes;
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    ...blockProps,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: {
+        display: 'flex',
+        flexFlow: "row nowrap",
+        width: '100%',
+        columnGap: columnGap.left
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        id: "l2wp-play-button",
+        style: {
+          display: 'flex',
+          backgroundColor: backgroundColor,
+          color: textColor,
+          borderColor,
+          borderRadius,
+          borderStyle,
+          borderWidth,
+          padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+        },
+        children: playText
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        id: "l2wp-pause-button",
+        style: {
+          display: 'flex',
+          backgroundColor: backgroundColor,
+          color: textColor,
+          borderColor,
+          borderRadius,
+          borderStyle,
+          borderWidth,
+          padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+        },
+        children: pauseText
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        id: "l2wp-resume-button",
+        style: {
+          display: 'flex',
+          backgroundColor: backgroundColor,
+          color: textColor,
+          borderColor,
+          borderRadius,
+          borderStyle,
+          borderWidth,
+          padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+        },
+        children: resumeText
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        id: "l2wp-cancel-button",
+        style: {
+          display: 'flex',
+          backgroundColor: backgroundColor,
+          color: textColor,
+          borderColor,
+          borderRadius,
+          borderStyle,
+          borderWidth,
+          padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+        },
+        children: stopText
+      })]
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./src/script.js":
+/*!***********************!*\
+  !*** ./src/script.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   cancelUtterance: () => (/* binding */ cancelUtterance),
+/* harmony export */   pauseUtterance: () => (/* binding */ pauseUtterance),
+/* harmony export */   playUtterance: () => (/* binding */ playUtterance),
+/* harmony export */   resumeUtterance: () => (/* binding */ resumeUtterance)
+/* harmony export */ });
+let synthesis;
+let utterance;
+if ('speechSynthesis' in window) {
+  synthesis = window.speechSynthesis;
+  utterance = new SpeechSynthesisUtterance();
+} else {
+  console.log('Text-to-speech not supported.');
+}
+const getContent = () => {
+  const article = document.querySelector('.entry-content');
+  if (article) {
+    const content = article.querySelectorAll(':scope > :not(.wp-block-rdev-l2wp)');
+    const toRead = [];
+    content.forEach(element => toRead.push(element.innerText || element.textContent));
+    return toRead.join(' ');
+  } else {
+    console.log('Can\'t find anything to read');
+    return 'Non riesco a leggere il contenuto';
+  }
+};
+const playUtterance = () => {
+  utterance.text = getContent();
+  if (synthesis && utterance) {
+    synthesis.speak(utterance);
+  }
+};
+const pauseUtterance = () => {
+  if (synthesis) {
+    synthesis.pause();
+  } else {
+    console.log('synthesis not defined');
+  }
+};
+const resumeUtterance = () => {
+  if (synthesis) {
+    synthesis.resume();
+  } else {
+    console.log('synthesis not defined');
+  }
+};
+const cancelUtterance = () => {
+  if (synthesis) {
+    synthesis.cancel();
+  } else {
+    console.log('synthesis not defined');
+  }
+};
+
+/***/ }),
+
+/***/ "./src/editor.scss":
+/*!*************************!*\
+  !*** ./src/editor.scss ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/style.scss":
+/*!************************!*\
+  !*** ./src/style.scss ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = window["React"];
+
+/***/ }),
+
+/***/ "react/jsx-runtime":
+/*!**********************************!*\
+  !*** external "ReactJSXRuntime" ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["ReactJSXRuntime"];
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "./src/block.json":
+/*!************************!*\
+  !*** ./src/block.json ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rdev/l2wp","version":"0.1.0","title":"Text to speech","category":"accessibility","icon":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><!--!Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d=\'M160 512l48-32 96-64H464h48V368 48 0H464 48 0V48 368v48H48h64 48v38.3V464v48zM277.4 376.1L208 422.3V416 368H160 48V48H464V368H304 289.5l-12.1 8.1zM168 112H144v48h24 64V296v24h48V296 160h64 24V112H344 256 168z\'/></svg>","description":"Text 2 speech block","example":{},"supports":{"html":false},"textdomain":"l2wp-dev","attributes":{"buttonColor":{"type":"string","default":"#FFFFFF"},"textColor":{"type":"string","default":"#000000"},"borderRadius":{"type":"string","default":"12px"},"borderColor":{"type":"string","default":"#ffffff"},"borderStyle":{"type":"string","default":"solid"},"borderWidth":{"type":"string","default":"0px"},"playText":{"type":"string","default":"Play"},"resumeText":{"type":"string","default":"Resume"},"pauseText":{"type":"string","default":"Pause"},"stopText":{"type":"string","default":"Stop"},"fontFamily":{"type":"string","default":"sans-serif"},"fontWeight":{"type":"string","default":"normal"},"fontSize":{"type":"string","default":"16px"},"columnGap":{"type":"object","default":{"right":"0px","left":"0px"}},"padding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}}},"editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"index": 0,
+/******/ 			"./style-index": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkl2wp_dev"] = self["webpackChunkl2wp_dev"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-index"], () => (__webpack_require__("./src/index.js")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=index.js.map

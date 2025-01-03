@@ -25,6 +25,18 @@
 			"type": "string",
 			"default": "12px"
 		},
+		"borderColor":{
+			"type": "string",
+			"default": "#ffffff"
+		},
+		"borderStyle":{
+			"type": "string",
+			"default": "solid"
+		},
+		"borderWidth":{
+			"type": "string",
+			"default": "0px"
+		},
 		"playText": {
 			"type": "string",
 			"default": "Play"

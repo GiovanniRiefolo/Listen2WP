@@ -16,6 +16,8 @@ import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} f
 import {PanelBody, TextControl} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
+import {__experimentalBorderControl as BorderControl} from "@wordpress/components";
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -34,13 +36,16 @@ import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from ".
  * @return {Element} Element to render.
  */
 export default function Edit(props) {
+
 	const {attributes, setAttributes} = props;
 
 	const {
 		textColor = '#000000',
 		backgroundColor = '#ffffff',
 		borderRadius = '12px',
-		borderColor = '#cccccc',
+		borderColor = '#ffffff',
+		borderStyle = 'solid',
+		borderWidth = '0px',
 		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
 		columnGap = {right: '0px', left: '0px'},
 		playText = 'Play',
@@ -49,7 +54,7 @@ export default function Edit(props) {
 		stopText = 'Stop',
 		fontFamily = 'sans-serif',
 		fontWeight = 'normal',
-		fontSize = '16px',
+		fontSize = '16px'
 	} = attributes;
 
 	return (
@@ -68,11 +73,6 @@ export default function Edit(props) {
 							value: backgroundColor,
 							onChange: (color) => setAttributes({backgroundColor: color}),
 							label: __('Background', 'l2wp-dev')
-						},
-						{
-							value: borderColor,
-							onChange: (color) => setAttributes({borderColor: color}),
-							label: __('Border', 'l2wp-dev')
 						}
 					]}>
 					<ContrastChecker
@@ -90,6 +90,21 @@ export default function Edit(props) {
 							{value: '%', label: '%', default: 0},
 							{value: 'em', label: 'em', default: 0},
 						]}
+					/>
+					<BorderControl
+						label={__('Border', 'l2wp-dev')}
+						value={{
+							style: borderStyle,
+							width: borderWidth,
+							color: borderColor,
+						}}
+						onChange={(newBorder) => {
+							setAttributes({
+								borderStyle: newBorder.style,
+								borderWidth: newBorder.width,
+								borderColor: newBorder.color,
+							});
+						}}
 					/>
 				</PanelBody>
 				<PanelBody title={__('Padding', 'l2wp-dev')}>
@@ -162,7 +177,8 @@ export default function Edit(props) {
 						color: textColor,
 						borderColor,
 						borderRadius,
-						borderStyle: 'solid',
+						borderStyle,
+						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={playUtterance}>{playText}</button>
 					<button id='l2wp-pause-button' style={{
@@ -171,7 +187,8 @@ export default function Edit(props) {
 						color: textColor,
 						borderColor,
 						borderRadius,
-						borderStyle: 'solid',
+						borderStyle,
+						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={pauseUtterance}>{pauseText}</button>
 					<button id='l2wp-resume-button' style={{
@@ -180,7 +197,8 @@ export default function Edit(props) {
 						color: textColor,
 						borderColor,
 						borderRadius,
-						borderStyle: 'solid',
+						borderStyle,
+						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={resumeUtterance}>{resumeText}</button>
 					<button id='l2wp-cancel-button' style={{
@@ -189,7 +207,8 @@ export default function Edit(props) {
 						color: textColor,
 						borderColor,
 						borderRadius,
-						borderStyle: 'solid',
+						borderStyle,
+						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={cancelUtterance}>{stopText}</button>
 				</div>
