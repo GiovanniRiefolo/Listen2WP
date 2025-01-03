@@ -3,7 +3,6 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import {useState} from 'react';
 import {__} from '@wordpress/i18n';
 
 /**
@@ -12,9 +11,13 @@ import {__} from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {useBlockProps, PanelColorSettings, InspectorControls} from '@wordpress/block-editor';
-import {ColorPicker, PanelBody, RangeControl, TextControl} from '@wordpress/components';
-import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
+import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
+import {
+	PanelBody,
+	RangeControl,
+	TextControl,
+	BorderBoxControl
+} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -86,8 +89,6 @@ export default function Edit(props) {
 							{value: 'em', label: 'em', default: 0},
 						]}
 					/>
-				</PanelBody>
-				<PanelBody title={__('Padding', 'l2wp-dev')}>
 					<BoxControl
 						label={__('Padding', 'l2wp-dev')}
 						values={padding}
