@@ -16,6 +16,58 @@
     "buttonColor": {
       "type": "string",
       "default": "#FFFFFF"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "12px"
+    },
+    "playText": {
+      "type": "string",
+      "default": "Play"
+    },
+    "resumeText": {
+      "type": "string",
+      "default": "Resume"
+    },
+    "pauseText": {
+      "type": "string",
+      "default": "Pause"
+    },
+    "stopText": {
+      "type": "string",
+      "default": "Stop"
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": "sans-serif"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "normal"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "16px"
+    },
+    "columnGap": {
+      "type": "object",
+      "default": {
+        "right": "0px",
+        "left": "0px"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "8px",
+        "right": "16px",
+        "bottom": "8px",
+        "left": "16px"
+      }
     }
   },
   "editorScript": "file:./index.js",

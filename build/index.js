@@ -66,51 +66,56 @@ function Edit(props) {
     setAttributes
   } = props;
   const {
-    textColor = '',
-    backgroundColor = '',
-    borderRadius = '0px',
-    borderColor = '',
+    textColor = '#000000',
+    backgroundColor = '#ffffff',
+    borderRadius = '12px',
+    borderColor = '#cccccc',
     padding = {
       top: '8px',
       right: '16px',
       bottom: '8px',
       left: '16px'
     },
-    rowGap = '0px',
-    columnGap = '0px',
+    columnGap = {
+      right: '0px',
+      left: '0px'
+    },
     playText = 'Play',
     pauseText = 'Pause',
     resumeText = 'Resume',
-    stopText = 'Stop'
+    stopText = 'Stop',
+    fontFamily = 'sans-serif',
+    fontWeight = 'normal',
+    fontSize = '16px'
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       group: "styles",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colori', 'l2wp-dev'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors', 'l2wp-dev'),
         initialOpen: true,
         colorSettings: [{
           value: textColor,
           onChange: color => setAttributes({
             textColor: color
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Testo', 'l2wp-dev')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text', 'l2wp-dev')
         }, {
           value: backgroundColor,
           onChange: color => setAttributes({
             backgroundColor: color
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Sfondo', 'l2wp-dev')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'l2wp-dev')
         }, {
           value: borderColor,
           onChange: color => setAttributes({
             borderColor: color
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Bordo', 'l2wp-dev')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border', 'l2wp-dev')
         }]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Bordi', 'l2wp-dev'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(UnitContrfol, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Borders', 'l2wp-dev'),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border Radius', 'l2wp-dev'),
           value: borderRadius,
           onChange: newRadius => setAttributes({
@@ -123,7 +128,7 @@ function Edit(props) {
           }, {
             value: '%',
             label: '%',
-            default: 10
+            default: 0
           }, {
             value: 'em',
             label: 'em',
@@ -146,32 +151,41 @@ function Edit(props) {
           }, {
             value: '%',
             label: '%',
-            default: 10
+            default: 0
           }, {
             value: 'em',
             label: 'em',
             default: 0
           }]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dimensions', 'l2wp-dev'),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-          label: "Row Gap",
-          value: parseInt(rowGap),
-          onChange: value => setAttributes({
-            rowGap: `${value}px`
-          }),
-          min: 0,
-          max: 100
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-          label: "Column Gap",
-          value: parseInt(columnGap),
-          onChange: value => setAttributes({
-            columnGap: `${value}px`
-          }),
-          min: 0,
-          max: 100
-        })]
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBoxControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Block Spaces', 'l2wp-dev'),
+          values: columnGap,
+          splitOnAxis: true,
+          onChange: newGap => {
+            console.log(newGap);
+            setAttributes({
+              columnGap: newGap
+            });
+            console.log(columnGap);
+          },
+          sides: "horizontal",
+          units: [{
+            value: 'px',
+            label: 'px',
+            default: 0
+          }, {
+            value: '%',
+            label: '%',
+            default: 0
+          }, {
+            value: 'em',
+            label: 'em',
+            default: 0
+          }]
+        })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       group: "settings",
@@ -210,8 +224,7 @@ function Edit(props) {
           display: 'flex',
           flexFlow: "row nowrap",
           width: '100%',
-          rowGap: `${rowGap || '0'}`,
-          columnGap: `${columnGap || '0'}`
+          columnGap: columnGap.left
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
           id: "l2wp-play-button",
@@ -368,22 +381,27 @@ function save({
   attributes
 }) {
   const {
-    textColor = '',
-    backgroundColor = '',
+    textColor = '#000000',
+    backgroundColor = '#ffffff',
     borderRadius = '12px',
-    borderColor = '',
+    borderColor = '#cccccc',
     padding = {
       top: '8px',
       right: '16px',
       bottom: '8px',
       left: '16px'
     },
-    rowGap = '30px',
-    columnGap = '0px',
+    columnGap = {
+      right: '0px',
+      left: '0px'
+    },
     playText = 'Play',
     pauseText = 'Pause',
     resumeText = 'Resume',
-    stopText = 'Stop'
+    stopText = 'Stop',
+    fontFamily = 'Arial, sans-serif',
+    fontWeight = 'normal',
+    fontSize = '16px'
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -393,8 +411,7 @@ function save({
         display: 'flex',
         flexFlow: "row nowrap",
         width: '100%',
-        rowGap: `${rowGap || '0'}`,
-        columnGap: `${columnGap || '0'}`
+        columnGap: columnGap.left
       },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         id: "l2wp-play-button",
@@ -604,7 +621,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rdev/l2wp","version":"0.1.0","title":"Text to speech","category":"accessibility","icon":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><!--!Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d=\'M160 512l48-32 96-64H464h48V368 48 0H464 48 0V48 368v48H48h64 48v38.3V464v48zM277.4 376.1L208 422.3V416 368H160 48V48H464V368H304 289.5l-12.1 8.1zM168 112H144v48h24 64V296v24h48V296 160h64 24V112H344 256 168z\'/></svg>","description":"Text 2 speech block","example":{},"supports":{"html":false},"textdomain":"l2wp-dev","attributes":{"buttonColor":{"type":"string","default":"#FFFFFF"}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rdev/l2wp","version":"0.1.0","title":"Text to speech","category":"accessibility","icon":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><!--!Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d=\'M160 512l48-32 96-64H464h48V368 48 0H464 48 0V48 368v48H48h64 48v38.3V464v48zM277.4 376.1L208 422.3V416 368H160 48V48H464V368H304 289.5l-12.1 8.1zM168 112H144v48h24 64V296v24h48V296 160h64 24V112H344 256 168z\'/></svg>","description":"Text 2 speech block","example":{},"supports":{"html":false},"textdomain":"l2wp-dev","attributes":{"buttonColor":{"type":"string","default":"#FFFFFF"},"textColor":{"type":"string","default":"#000000"},"borderRadius":{"type":"string","default":"12px"},"playText":{"type":"string","default":"Play"},"resumeText":{"type":"string","default":"Resume"},"pauseText":{"type":"string","default":"Pause"},"stopText":{"type":"string","default":"Stop"},"fontFamily":{"type":"string","default":"sans-serif"},"fontWeight":{"type":"string","default":"normal"},"fontSize":{"type":"string","default":"16px"},"columnGap":{"type":"object","default":{"right":"0px","left":"0px"}},"padding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

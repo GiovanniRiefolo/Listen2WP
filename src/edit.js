@@ -37,50 +37,52 @@ export default function Edit(props) {
 	const {attributes, setAttributes} = props;
 
 	const {
-		textColor = '',
-		backgroundColor = '',
-		borderRadius = '0px',
-		borderColor = '',
-		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
-		rowGap = '0px',
-		columnGap = '0px',
-		playText = 'Play',
-		pauseText = 'Pause',
-		resumeText = 'Resume',
-		stopText = 'Stop'
-	} = attributes;
+        textColor = '#000000',
+        backgroundColor = '#ffffff',
+        borderRadius = '12px',
+        borderColor = '#cccccc',
+        padding = { top: '8px', right: '16px', bottom: '8px', left: '16px' },
+				columnGap = { right:'0px', left: '0px' },
+        playText = 'Play',
+        pauseText = 'Pause',
+        resumeText = 'Resume',
+        stopText = 'Stop',
+        fontFamily = 'sans-serif',
+        fontWeight = 'normal',
+        fontSize = '16px',
+    } = attributes;
 
 	return (
 		<>
 			<InspectorControls group="styles">
 				<PanelColorSettings
-					title={__('Colori', 'l2wp-dev')}
+					title={__('Colors', 'l2wp-dev')}
 					initialOpen={true}
 					colorSettings={[
 						{
 							value: textColor,
 							onChange: (color) => setAttributes({textColor: color}),
-							label: __('Testo', 'l2wp-dev')
+							label: __('Text', 'l2wp-dev')
 						},
 						{
 							value: backgroundColor,
 							onChange: (color) => setAttributes({backgroundColor: color}),
-							label: __('Sfondo', 'l2wp-dev')
+							label: __('Background', 'l2wp-dev')
 						},
 						{
 							value: borderColor,
 							onChange: (color) => setAttributes({borderColor: color}),
-							label: __('Bordo', 'l2wp-dev')
+							label: __('Border', 'l2wp-dev')
 						}
 					]}/>
-				<PanelBody title={__('Bordi', 'l2wp-dev')}>
-					<UnitContrfol
+				<PanelBody title={__('Borders', 'l2wp-dev')}>
+					<UnitControl
 						label={__('Border Radius', 'l2wp-dev')}
 						value={borderRadius}
 						onChange={(newRadius) => setAttributes({borderRadius: newRadius})}
 						units={[
 							{value: 'px', label: 'px', default: 0},
-							{value: '%', label: '%', default: 10},
+							{value: '%', label: '%', default: 0},
 							{value: 'em', label: 'em', default: 0},
 						]}
 					/>
@@ -93,26 +95,28 @@ export default function Edit(props) {
 						onChange={(newPadding) => setAttributes({padding: newPadding})}
 						units={[
 							{value: 'px', label: 'px', default: 0},
-							{value: '%', label: '%', default: 10},
+							{value: '%', label: '%', default: 0},
 							{value: 'em', label: 'em', default: 0},
 						]}
 					/>
 				</PanelBody>
 				<PanelBody title={__('Dimensions', 'l2wp-dev')}>
-					<RangeControl
-                        label="Row Gap"
-                        value={parseInt(rowGap)}
-                        onChange={(value) => setAttributes({ rowGap: `${value}px` })}
-                        min={0}
-                        max={100}
-                    />
-                    <RangeControl
-                        label="Column Gap"
-                        value={parseInt(columnGap)}
-                        onChange={(value) => setAttributes({ columnGap: `${value}px` })}
-                        min={0}
-                        max={100}
-                    />
+					<BoxControl
+						label={__('Block Spaces', 'l2wp-dev')}
+						values={columnGap}
+						splitOnAxis={true}
+						onChange={(newGap) => {
+							console.log(newGap)
+							setAttributes({columnGap: newGap})
+							console.log(columnGap)
+						}}
+						sides='horizontal'
+						units={[
+							{value: 'px', label: 'px', default: 0},
+							{value: '%', label: '%', default: 0},
+							{value: 'em', label: 'em', default: 0},
+						]}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="settings">
@@ -145,8 +149,7 @@ export default function Edit(props) {
 						display: 'flex',
 						flexFlow: "row nowrap",
 						width: '100%',
-						rowGap: `${rowGap || '0'}`,
-						columnGap: `${columnGap || '0'}`
+						columnGap: columnGap.left
 					}}>
 					<button id='l2wp-play-button' style={{
 						display: 'flex',
@@ -155,7 +158,7 @@ export default function Edit(props) {
 						borderColor,
 						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={playUtterance}>{playText}</button>
 					<button id='l2wp-pause-button' style={{
 						display: 'flex',
@@ -164,7 +167,7 @@ export default function Edit(props) {
 						borderColor,
 						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={pauseUtterance}>{pauseText}</button>
 					<button id='l2wp-resume-button' style={{
 						display: 'flex',
@@ -173,7 +176,7 @@ export default function Edit(props) {
 						borderColor,
 						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={resumeUtterance}>{resumeText}</button>
 					<button id='l2wp-cancel-button' style={{
 						display: 'flex',
@@ -182,7 +185,7 @@ export default function Edit(props) {
 						borderColor,
 						borderRadius,
 						borderStyle: 'solid',
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
+						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={cancelUtterance}>{stopText}</button>
 				</div>
 			</div>
