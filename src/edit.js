@@ -3,6 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
+import {useState} from 'react';
 import {__} from '@wordpress/i18n';
 
 /**
@@ -12,12 +13,8 @@ import {__} from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
-import {
-	PanelBody,
-	RangeControl,
-	TextControl,
-	BorderBoxControl
-} from '@wordpress/components';
+import {PanelBody, TextControl} from '@wordpress/components';
+import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -40,20 +37,20 @@ export default function Edit(props) {
 	const {attributes, setAttributes} = props;
 
 	const {
-        textColor = '#000000',
-        backgroundColor = '#ffffff',
-        borderRadius = '12px',
-        borderColor = '#cccccc',
-        padding = { top: '8px', right: '16px', bottom: '8px', left: '16px' },
-				columnGap = { right:'0px', left: '0px' },
-        playText = 'Play',
-        pauseText = 'Pause',
-        resumeText = 'Resume',
-        stopText = 'Stop',
-        fontFamily = 'sans-serif',
-        fontWeight = 'normal',
-        fontSize = '16px',
-    } = attributes;
+		textColor = '#000000',
+		backgroundColor = '#ffffff',
+		borderRadius = '12px',
+		borderColor = '#cccccc',
+		padding = {top: '8px', right: '16px', bottom: '8px', left: '16px'},
+		columnGap = {right: '0px', left: '0px'},
+		playText = 'Play',
+		pauseText = 'Pause',
+		resumeText = 'Resume',
+		stopText = 'Stop',
+		fontFamily = 'sans-serif',
+		fontWeight = 'normal',
+		fontSize = '16px',
+	} = attributes;
 
 	return (
 		<>
@@ -77,7 +74,12 @@ export default function Edit(props) {
 							onChange: (color) => setAttributes({borderColor: color}),
 							label: __('Border', 'l2wp-dev')
 						}
-					]}/>
+					]}>
+					<ContrastChecker
+						textColor={textColor}
+						backgroundColor={backgroundColor}
+					/>
+				</PanelColorSettings>
 				<PanelBody title={__('Borders', 'l2wp-dev')}>
 					<UnitControl
 						label={__('Border Radius', 'l2wp-dev')}
@@ -89,6 +91,8 @@ export default function Edit(props) {
 							{value: 'em', label: 'em', default: 0},
 						]}
 					/>
+				</PanelBody>
+				<PanelBody title={__('Padding', 'l2wp-dev')}>
 					<BoxControl
 						label={__('Padding', 'l2wp-dev')}
 						values={padding}

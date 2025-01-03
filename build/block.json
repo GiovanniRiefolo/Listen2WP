@@ -13,9 +13,8 @@
   },
   "textdomain": "l2wp-dev",
   "attributes": {
-    "textColor": {
+    "buttonColor": {
       "type": "string",
-<<<<<<< HEAD
       "default": "#FFFFFF"
     },
     "textColor": {
@@ -59,21 +58,6 @@
       "default": {
         "right": "0px",
         "left": "0px"
-=======
-      "default": ""
-    },
-    "backgroundColor": {
-      "type": "string",
-      "default": ""
-    },
-    "border": {
-      "type": "object",
-      "default": {
-        "color": "transparent",
-        "width": "0px",
-        "style": "solid",
-        "radius": "0px"
->>>>>>> 42b036d03f4bb4f4fbc12cf6ca21b2dbb2fa11fd
       }
     },
     "padding": {
@@ -84,46 +68,8 @@
         "bottom": "8px",
         "left": "16px"
       }
-<<<<<<< HEAD
-=======
-    },
-    "margin": {
-      "type": "object",
-      "default": {
-        "top": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "left": "0px"
-      }
-    },
-    "rowGap": {
-      "type": "string",
-      "default": "0px"
-    },
-    "columnGap": {
-      "type": "string",
-      "default": "0px"
-    },
-    "playText": {
-      "type": "string",
-      "default": "Play"
-    },
-    "pauseText": {
-      "type": "string",
-      "default": "Pause"
-    },
-    "resumeText": {
-      "type": "string",
-      "default": "Resume"
-    },
-    "stopText": {
-      "type": "string",
-      "default": "Stop"
->>>>>>> 42b036d03f4bb4f4fbc12cf6ca21b2dbb2fa11fd
     }
   },
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "editorStyle": "file:./index.css"
 }
