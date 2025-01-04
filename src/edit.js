@@ -12,7 +12,7 @@ import {__} from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
-import {PanelBody, TextControl, FontSizePicker} from '@wordpress/components';
+import {PanelBody, TextControl} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
 import {__experimentalBorderControl as BorderControl} from "@wordpress/components";
@@ -23,7 +23,8 @@ import {__experimentalBorderControl as BorderControl} from "@wordpress/component
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import './style.scss';
+
 import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from "./script";
 
 /**
@@ -50,9 +51,7 @@ export default function Edit(props) {
 		playText = 'Play',
 		pauseText = 'Pause',
 		resumeText = 'Resume',
-		stopText = 'Stop',
-		fontFamily = 'sans-serif',
-		fontWeight = 'normal'
+		stopText = 'Stop'
 	} = attributes;
 
 	return (
@@ -163,58 +162,59 @@ export default function Edit(props) {
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<div
-					className="l2wp-buttons"
-					style={{
-						display: 'flex',
-						flexFlow: "row nowrap",
-						width: '100%',
-						columnGap: columnGap.left
-					}}>
-					<button id='l2wp-play-button' style={{
-						display: 'flex',
-						backgroundColor,
-						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle,
-						borderWidth,
-						fontSize: attributes.fontSize,
-						fontFamily: attributes.fontFamily,
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
-					}} onClick={playUtterance}>{playText}</button>
-					<button id='l2wp-pause-button' style={{
-						display: 'flex',
-						backgroundColor,
-						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle,
-						borderWidth,
-						fontSize: attributes.fontSize,
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
-					}} onClick={pauseUtterance}>{pauseText}</button>
-					<button id='l2wp-resume-button' style={{
-						display: 'flex',
-						backgroundColor,
-						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle,
-						borderWidth,
-						fontSize: attributes.fontSize,
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
-					}} onClick={resumeUtterance}>{resumeText}</button>
-					<button id='l2wp-cancel-button' style={{
-						display: 'flex',
-						backgroundColor,
-						color: textColor,
-						borderColor,
-						borderRadius,
-						borderStyle,
-						borderWidth,
-						fontSize: attributes.fontSize,
-						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
-					}} onClick={cancelUtterance}>{stopText}</button>
+					className="wp-block-rdev-l2wp__buttons"
+					style={{columnGap: columnGap.left}}>
+					<button
+						id='l2wp-play-button'
+						style={{
+							display: 'flex',
+							backgroundColor,
+							color: textColor,
+							borderColor,
+							borderRadius,
+							borderStyle,
+							borderWidth,
+							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						}}
+						onClick={playUtterance}>{playText}</button>
+					<button
+						id='l2wp-pause-button'
+						style={{
+							display: 'flex',
+							backgroundColor,
+							color: textColor,
+							borderColor,
+							borderRadius,
+							borderStyle,
+							borderWidth,
+							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						}} onClick={pauseUtterance}>{pauseText}</button>
+					<button
+						id='l2wp-resume-button'
+						style={{
+							display: 'flex',
+							backgroundColor,
+							color: textColor,
+							borderColor,
+							borderRadius,
+							borderStyle,
+							borderWidth,
+							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						}}
+						onClick={resumeUtterance}>{resumeText}</button>
+					<button
+						id='l2wp-cancel-button'
+						style={{
+							display: 'flex',
+							backgroundColor,
+							color: textColor,
+							borderColor,
+							borderRadius,
+							borderStyle,
+							borderWidth,
+							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
+						}}
+						onClick={cancelUtterance}>{stopText}</button>
 				</div>
 			</div>
 		</>

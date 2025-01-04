@@ -4,16 +4,21 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-rdev-l2wp {
 
-.wp-block-create-block-l2wp-dev {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
-}
+	&__buttons {
+		display: flex;
+		flex-flow: row nowrap;
+		width: 100%;
 
-
-.l2wp-buttons{
-	button{
-		font-size: inherit;
+		button {
+			font-size: inherit;
+			font-family: inherit;
+			font-weight: inherit;
+			cursor: pointer;
+			&:hover{
+				opacity: .8;
+			}
+		}
 	}
 }

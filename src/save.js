@@ -29,26 +29,20 @@ export default function save({attributes}) {
 		playText = 'Play',
 		pauseText = 'Pause',
 		resumeText = 'Resume',
-		stopText = 'Stop',
-		fontFamily = 'Arial, sans-serif',
-		fontWeight = 'normal'
+		stopText = 'Stop'
 	} = attributes;
 	const blockProps = useBlockProps.save();
 
 	return (
 		<div {...blockProps}>
 			<div
-				style={{
-					display: 'flex',
-					flexFlow: "row nowrap",
-					width: '100%',
-					columnGap: columnGap.left
-				}}>
+				className="wp-block-rdev-l2wp__buttons"
+				style={{ columnGap: columnGap.left }}>
 				<button
 					id='l2wp-play-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
 						borderColor,
 						borderRadius,
@@ -62,7 +56,7 @@ export default function save({attributes}) {
 					id='l2wp-pause-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
 						borderColor,
 						borderRadius,
@@ -76,7 +70,7 @@ export default function save({attributes}) {
 					id='l2wp-resume-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
 						borderColor,
 						borderRadius,
@@ -90,7 +84,7 @@ export default function save({attributes}) {
 					id='l2wp-cancel-button'
 					style={{
 						display: 'flex',
-						backgroundColor: backgroundColor,
+						backgroundColor,
 						color: textColor,
 						borderColor,
 						borderRadius,

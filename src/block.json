@@ -13,7 +13,8 @@
 		"typography": {
 			"fontSize": true,
 			"lineHeight": true,
-			"textAlign": true
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true
 		}
 	},
 	"textdomain": "l2wp-dev",
@@ -25,6 +26,10 @@
 		"textColor": {
 			"type": "string",
 			"default": "#000000"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": "#FFFFFF"
 		},
 		"borderRadius": {
 			"type": "string",
@@ -89,15 +94,16 @@
 		"style": {
 			"type": "object",
 			"default": {
-				"typography": {
-					"lineHeight": "1,2",
+				"typography": { 
+					"lineHeight": "1.2",
 					"fontSize": "14px",
-					"__experimentalFontFamily": true
+					"fontFamily": "system-sans-serif",
+					"fontWeight": "normal"
 				}
 			}
 		}
 	},
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./editor.scss"
+	"style": "file:./style-index.css"
 }
 
