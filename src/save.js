@@ -55,6 +55,7 @@ export default function save({attributes}) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{playText}
@@ -69,6 +70,7 @@ export default function save({attributes}) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{pauseText}
@@ -83,6 +85,7 @@ export default function save({attributes}) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{resumeText}
@@ -97,6 +100,7 @@ export default function save({attributes}) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
 					{stopText}

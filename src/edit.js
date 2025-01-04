@@ -3,7 +3,6 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import {useState} from 'react';
 import {__} from '@wordpress/i18n';
 
 /**
@@ -13,7 +12,7 @@ import {__} from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
-import {PanelBody, TextControl} from '@wordpress/components';
+import {PanelBody, TextControl, FontSizePicker} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
 import {__experimentalBorderControl as BorderControl} from "@wordpress/components";
@@ -162,6 +161,32 @@ export default function Edit(props) {
 						onChange={(value) => setAttributes({stopText: value})}
 					/>
 				</PanelBody>
+				<PanelBody title={__('Typography', 'l2wp-dev')}>
+					<FontSizePicker
+						___next40pxDefaultSize
+						fontSizes={[
+							{
+								name: __('Small', 'l2wp-dev'),
+								slug: 'small',
+								size: 12,
+							},
+							{
+								name: __('Normal', 'l2wp-dev'),
+								slug: 'normal',
+								size: 14,
+							},
+							{
+								name: __('Big', 'l2wp-dev'),
+								slug: 'big',
+								size: 22,
+							},
+						]}
+						value={fontSize}
+						fallbackFontSize={14}
+						withSlider={true}
+						withReset={false}
+						onChange={newFontSize => setAttributes({fontSize: newFontSize})}/>
+				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<div
@@ -179,6 +204,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={playUtterance}>{playText}</button>
 					<button id='l2wp-pause-button' style={{
@@ -189,6 +215,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={pauseUtterance}>{pauseText}</button>
 					<button id='l2wp-resume-button' style={{
@@ -199,6 +226,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={resumeUtterance}>{resumeText}</button>
 					<button id='l2wp-cancel-button' style={{
@@ -209,6 +237,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
+						fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={cancelUtterance}>{stopText}</button>
 				</div>
