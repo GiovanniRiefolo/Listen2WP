@@ -86,8 +86,7 @@ function Edit(props) {
     resumeText = 'Resume',
     stopText = 'Stop',
     fontFamily = 'sans-serif',
-    fontWeight = 'normal',
-    fontSize = '16px'
+    fontWeight = 'normal'
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
@@ -200,9 +199,9 @@ function Edit(props) {
           }]
         })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       group: "settings",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Labels', 'l2wp-dev'),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           label: "Play Text",
@@ -229,35 +228,11 @@ function Edit(props) {
             stopText: value
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Typography', 'l2wp-dev'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
-          ___next40pxDefaultSize: true,
-          fontSizes: [{
-            name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Small', 'l2wp-dev'),
-            slug: 'small',
-            size: 12
-          }, {
-            name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Normal', 'l2wp-dev'),
-            slug: 'normal',
-            size: 14
-          }, {
-            name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Big', 'l2wp-dev'),
-            slug: 'big',
-            size: 22
-          }],
-          value: fontSize,
-          fallbackFontSize: 14,
-          withSlider: true,
-          withReset: false,
-          onChange: newFontSize => setAttributes({
-            fontSize: newFontSize
-          })
-        })
-      })]
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "l2wp-buttons",
         style: {
           display: 'flex',
           flexFlow: "row nowrap",
@@ -274,7 +249,8 @@ function Edit(props) {
             borderRadius,
             borderStyle,
             borderWidth,
-            fontSize,
+            fontSize: attributes.fontSize,
+            fontFamily: attributes.fontFamily,
             padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
           },
           onClick: _script__WEBPACK_IMPORTED_MODULE_4__.playUtterance,
@@ -289,7 +265,7 @@ function Edit(props) {
             borderRadius,
             borderStyle,
             borderWidth,
-            fontSize,
+            fontSize: attributes.fontSize,
             padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
           },
           onClick: _script__WEBPACK_IMPORTED_MODULE_4__.pauseUtterance,
@@ -304,7 +280,7 @@ function Edit(props) {
             borderRadius,
             borderStyle,
             borderWidth,
-            fontSize,
+            fontSize: attributes.fontSize,
             padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
           },
           onClick: _script__WEBPACK_IMPORTED_MODULE_4__.resumeUtterance,
@@ -319,7 +295,7 @@ function Edit(props) {
             borderRadius,
             borderStyle,
             borderWidth,
-            fontSize,
+            fontSize: attributes.fontSize,
             padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
           },
           onClick: _script__WEBPACK_IMPORTED_MODULE_4__.cancelUtterance,
@@ -448,8 +424,7 @@ function save({
     resumeText = 'Resume',
     stopText = 'Stop',
     fontFamily = 'Arial, sans-serif',
-    fontWeight = 'normal',
-    fontSize = '16px'
+    fontWeight = 'normal'
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -471,7 +446,6 @@ function save({
           borderRadius,
           borderStyle,
           borderWidth,
-          fontSize,
           padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
         },
         children: playText
@@ -485,7 +459,6 @@ function save({
           borderRadius,
           borderStyle,
           borderWidth,
-          fontSize,
           padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
         },
         children: pauseText
@@ -499,7 +472,6 @@ function save({
           borderRadius,
           borderStyle,
           borderWidth,
-          fontSize,
           padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
         },
         children: resumeText
@@ -513,7 +485,6 @@ function save({
           borderRadius,
           borderStyle,
           borderWidth,
-          fontSize,
           padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
         },
         children: stopText
@@ -677,7 +648,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rdev/l2wp","version":"0.1.0","title":"Text to speech","category":"accessibility","icon":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><!--!Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d=\'M160 512l48-32 96-64H464h48V368 48 0H464 48 0V48 368v48H48h64 48v38.3V464v48zM277.4 376.1L208 422.3V416 368H160 48V48H464V368H304 289.5l-12.1 8.1zM168 112H144v48h24 64V296v24h48V296 160h64 24V112H344 256 168z\'/></svg>","description":"Text 2 speech block","example":{},"supports":{"html":false},"textdomain":"l2wp-dev","attributes":{"buttonColor":{"type":"string","default":"#FFFFFF"},"textColor":{"type":"string","default":"#000000"},"borderRadius":{"type":"string","default":"12px"},"borderColor":{"type":"string","default":"#ffffff"},"borderStyle":{"type":"string","default":"solid"},"borderWidth":{"type":"string","default":"0px"},"playText":{"type":"string","default":"Play"},"resumeText":{"type":"string","default":"Resume"},"pauseText":{"type":"string","default":"Pause"},"stopText":{"type":"string","default":"Stop"},"fontFamily":{"type":"string","default":"sans-serif"},"fontWeight":{"type":"string","default":"normal"},"fontSize":{"type":"string","default":"16px"},"columnGap":{"type":"object","default":{"right":"0px","left":"0px"}},"padding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}}},"editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rdev/l2wp","version":"0.1.0","title":"Text to speech","category":"accessibility","icon":"<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><!--!Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d=\'M160 512l48-32 96-64H464h48V368 48 0H464 48 0V48 368v48H48h64 48v38.3V464v48zM277.4 376.1L208 422.3V416 368H160 48V48H464V368H304 289.5l-12.1 8.1zM168 112H144v48h24 64V296v24h48V296 160h64 24V112H344 256 168z\'/></svg>","description":"Text 2 speech block","example":{},"supports":{"html":false,"typography":{"fontSize":true,"lineHeight":true,"textAlign":true}},"textdomain":"l2wp-dev","attributes":{"buttonColor":{"type":"string","default":"#FFFFFF"},"textColor":{"type":"string","default":"#000000"},"borderRadius":{"type":"string","default":"12px"},"borderColor":{"type":"string","default":"#ffffff"},"borderStyle":{"type":"string","default":"solid"},"borderWidth":{"type":"string","default":"0px"},"playText":{"type":"string","default":"Play"},"resumeText":{"type":"string","default":"Resume"},"pauseText":{"type":"string","default":"Pause"},"stopText":{"type":"string","default":"Stop"},"fontFamily":{"type":"string","default":"sans-serif"},"fontWeight":{"type":"string","default":"normal"},"fontSize":{"type":"string","default":"14px"},"columnGap":{"type":"object","default":{"right":"0px","left":"0px"}},"padding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}},"style":{"type":"object","default":{"typography":{"lineHeight":"1,2","fontSize":"14px","__experimentalFontFamily":true}}}},"editorScript":"file:./index.js","editorStyle":"file:./editor.scss"}');
 
 /***/ })
 

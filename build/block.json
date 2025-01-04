@@ -9,7 +9,12 @@
   "description": "Text 2 speech block",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    }
   },
   "textdomain": "l2wp-dev",
   "attributes": {
@@ -63,7 +68,7 @@
     },
     "fontSize": {
       "type": "string",
-      "default": "16px"
+      "default": "14px"
     },
     "columnGap": {
       "type": "object",
@@ -80,8 +85,18 @@
         "bottom": "8px",
         "left": "16px"
       }
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "typography": {
+          "lineHeight": "1,2",
+          "fontSize": "14px",
+          "__experimentalFontFamily": true
+        }
+      }
     }
   },
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css"
+  "editorStyle": "file:./editor.scss"
 }

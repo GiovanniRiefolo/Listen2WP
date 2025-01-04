@@ -1,39 +1,44 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "rdev/l2wp",
-  "version": "0.1.0",
-  "title": "Text to speech",
-  "category": "accessibility",
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rdev/l2wp",
+	"version": "0.1.0",
+	"title": "Text to speech",
+	"category": "accessibility",
 	"icon": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><!--!Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--><path d='M160 512l48-32 96-64H464h48V368 48 0H464 48 0V48 368v48H48h64 48v38.3V464v48zM277.4 376.1L208 422.3V416 368H160 48V48H464V368H304 289.5l-12.1 8.1zM168 112H144v48h24 64V296v24h48V296 160h64 24V112H344 256 168z'/></svg>",
-  "description": "Text 2 speech block",
-  "example": {},
-  "supports": {
-    "html": false
-  },
-  "textdomain": "l2wp-dev",
-  "attributes": {
-	  "buttonColor": {
-		  "type": "string",
-		  "default": "#FFFFFF"
-	  },
-		"textColor":{
+	"description": "Text 2 speech block",
+	"example": {},
+	"supports": {
+		"html": false,
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true
+		}
+	},
+	"textdomain": "l2wp-dev",
+	"attributes": {
+		"buttonColor": {
+			"type": "string",
+			"default": "#FFFFFF"
+		},
+		"textColor": {
 			"type": "string",
 			"default": "#000000"
 		},
-		"borderRadius":{
+		"borderRadius": {
 			"type": "string",
 			"default": "12px"
 		},
-		"borderColor":{
+		"borderColor": {
 			"type": "string",
 			"default": "#ffffff"
 		},
-		"borderStyle":{
+		"borderStyle": {
 			"type": "string",
 			"default": "solid"
 		},
-		"borderWidth":{
+		"borderWidth": {
 			"type": "string",
 			"default": "0px"
 		},
@@ -53,17 +58,17 @@
 			"type": "string",
 			"default": "Stop"
 		},
-		"fontFamily":{
+		"fontFamily": {
 			"type": "string",
 			"default": "sans-serif"
 		},
-		"fontWeight":{
+		"fontWeight": {
 			"type": "string",
 			"default": "normal"
 		},
 		"fontSize": {
 			"type": "string",
-			"default": "16px"
+			"default": "14px"
 		},
 		"columnGap": {
 			"type": "object",
@@ -80,9 +85,19 @@
 				"bottom": "8px",
 				"left": "16px"
 			}
+		},
+		"style": {
+			"type": "object",
+			"default": {
+				"typography": {
+					"lineHeight": "1,2",
+					"fontSize": "14px",
+					"__experimentalFontFamily": true
+				}
+			}
 		}
-  },
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css"
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.scss"
 }
 

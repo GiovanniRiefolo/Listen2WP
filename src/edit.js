@@ -52,8 +52,7 @@ export default function Edit(props) {
 		resumeText = 'Resume',
 		stopText = 'Stop',
 		fontFamily = 'sans-serif',
-		fontWeight = 'normal',
-		fontSize = '16px'
+		fontWeight = 'normal'
 	} = attributes;
 
 	return (
@@ -161,35 +160,10 @@ export default function Edit(props) {
 						onChange={(value) => setAttributes({stopText: value})}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Typography', 'l2wp-dev')}>
-					<FontSizePicker
-						___next40pxDefaultSize
-						fontSizes={[
-							{
-								name: __('Small', 'l2wp-dev'),
-								slug: 'small',
-								size: 12,
-							},
-							{
-								name: __('Normal', 'l2wp-dev'),
-								slug: 'normal',
-								size: 14,
-							},
-							{
-								name: __('Big', 'l2wp-dev'),
-								slug: 'big',
-								size: 22,
-							},
-						]}
-						value={fontSize}
-						fallbackFontSize={14}
-						withSlider={true}
-						withReset={false}
-						onChange={newFontSize => setAttributes({fontSize: newFontSize})}/>
-				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<div
+					className="l2wp-buttons"
 					style={{
 						display: 'flex',
 						flexFlow: "row nowrap",
@@ -204,7 +178,8 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
-						fontSize,
+						fontSize: attributes.fontSize,
+						fontFamily: attributes.fontFamily,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={playUtterance}>{playText}</button>
 					<button id='l2wp-pause-button' style={{
@@ -215,7 +190,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
-						fontSize,
+						fontSize: attributes.fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={pauseUtterance}>{pauseText}</button>
 					<button id='l2wp-resume-button' style={{
@@ -226,7 +201,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
-						fontSize,
+						fontSize: attributes.fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={resumeUtterance}>{resumeText}</button>
 					<button id='l2wp-cancel-button' style={{
@@ -237,7 +212,7 @@ export default function Edit(props) {
 						borderRadius,
 						borderStyle,
 						borderWidth,
-						fontSize,
+						fontSize: attributes.fontSize,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 					}} onClick={cancelUtterance}>{stopText}</button>
 				</div>

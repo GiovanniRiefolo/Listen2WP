@@ -12,3 +12,7 @@
   color: #fff;
   padding: 2px;
 }
+
+.l2wp-buttons button {
+  font-size: inherit;
+}
