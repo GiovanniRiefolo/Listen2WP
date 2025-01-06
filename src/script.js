@@ -9,9 +9,11 @@ if ('speechSynthesis' in window) {
 }
 
 const getContent = () => {
+	console.log('test')
 	const article = document.querySelector('.entry-content')
 	if (article) {
 		const content = article.querySelectorAll(':scope > :not(.wp-block-rdev-l2wp)')
+		console.log(content)
 		const toRead = [];
 		content.forEach(element => toRead.push(element.innerText || element.textContent));
 		return toRead.join(' ');
@@ -23,6 +25,7 @@ const getContent = () => {
 
 export const playUtterance = () => {
 	utterance.text = getContent()
+	console.log(utterance.text)
 	if (synthesis && utterance) {
 		synthesis.speak(utterance);
 	}
