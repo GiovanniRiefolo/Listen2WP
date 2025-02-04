@@ -96,7 +96,7 @@
       "default": {
         "typography": {
           "lineHeight": "1.2",
-          "fontSize": "14px",
+          "fontSize": "",
           "fontFamily": "system-sans-serif",
           "fontWeight": "normal"
         }
