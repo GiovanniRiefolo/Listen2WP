@@ -32,7 +32,11 @@ import {
 	PlayIconNormalFilled,
 	PlayIconNormalOutlined,
 	PlayIconRoundedFilled,
-	PlayIconRoundedOutlined
+	PlayIconRoundedOutlined,
+	PauseIconNormalFilled,
+	PauseIconNormalOutlined,
+	PauseIconRoundedFilled,
+	PauseIconRoundedOutlined
 } from "./icons-library";
 
 /**
@@ -113,6 +117,18 @@ export default function Edit(props) {
 						</button>
 						<button onClick={() => applyChoice(<PlayIconRoundedOutlined/>)}>
 							<PlayIconRoundedOutlined/>
+						</button>
+						<button onClick={() => applyChoice(<PauseIconNormalFilled/>)}>
+							<PauseIconNormalFilled/>
+						</button>
+						<button onClick={() => applyChoice(<PauseIconNormalOutlined/>)}>
+							<PauseIconNormalOutlined/>
+						</button>
+						<button onClick={() => applyChoice(<PauseIconRoundedFilled/>)}>
+							<PauseIconRoundedFilled/>
+						</button>
+						<button onClick={() => applyChoice(<PauseIconRoundedOutlined/>)}>
+							<PauseIconRoundedOutlined/>
 						</button>
 					</div>
 					<Button variant="secondary" onClick={closeModal}>

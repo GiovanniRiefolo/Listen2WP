@@ -71,7 +71,7 @@ export default function save({attributes}) {
 					<span className="icon" style={{
 						"--icon-fill": textColor ? textColor : '#000',
 						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.pauseIcon && pickIcon(attributes.pauseIcon)}</span>
+					}}>{attributes.pauseIcon && attributes.pauseIcon}</span>
 					{pauseText}
 				</button>
 				<button
@@ -89,7 +89,7 @@ export default function save({attributes}) {
 					<span className="icon" style={{
 						"--icon-fill": textColor ? textColor : '#000',
 						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.resumeIcon && pickIcon(attributes.resumeIcon)}</span>
+					}}>{attributes.resumeIcon && attributes.resumeIcon}</span>
 					{resumeText}
 				</button>
 				<button
@@ -107,7 +107,7 @@ export default function save({attributes}) {
 					<span className="icon" style={{
 						"--icon-fill": textColor ? textColor : '#000',
 						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.stopIcon && pickIcon(attributes.stopIcon)}</span>
+					}}>{attributes.stopIcon && attributes.stopIcon}</span>
 					{stopText}
 				</button>
 			</div>
