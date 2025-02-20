@@ -63,6 +63,22 @@
       "type": "string",
       "default": "Stop"
     },
+    "playIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "pauseIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "resumeIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "stopIcon": {
+      "type": "string",
+      "default": ""
+    },
     "fontFamily": {
       "type": "string",
       "default": "sans-serif"
@@ -73,7 +89,7 @@
     },
     "fontSize": {
       "type": "string",
-      "default": "14px"
+      "default": ""
     },
     "columnGap": {
       "type": "object",

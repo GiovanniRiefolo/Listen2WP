@@ -25,7 +25,6 @@
 import {playUtterance, pauseUtterance, resumeUtterance, cancelUtterance} from "./script";
 
 document.addEventListener('DOMContentLoaded', () => {
-	console.log('rest')
 	const playButton = document.getElementById('l2wp-play-button');
 	const pauseButton = document.getElementById('l2wp-pause-button');
 	const resumeButton = document.getElementById('l2wp-resume-button');

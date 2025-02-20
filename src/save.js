@@ -37,7 +37,7 @@ export default function save({attributes}) {
 		<div {...blockProps}>
 			<div
 				className="wp-block-rdev-l2wp__buttons"
-				style={{ columnGap: columnGap.left }}>
+				style={{columnGap: columnGap.left}}>
 				<button
 					id='l2wp-play-button'
 					style={{
@@ -50,6 +50,10 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
+					<span className="icon" style={{
+						"--icon-fill": textColor ? textColor : '#000',
+						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+					}}>{attributes.playIcon && attributes.playIcon}</span>
 					{playText}
 				</button>
 				<button
@@ -64,6 +68,10 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
+					<span className="icon" style={{
+						"--icon-fill": textColor ? textColor : '#000',
+						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+					}}>{attributes.pauseIcon && pickIcon(attributes.pauseIcon)}</span>
 					{pauseText}
 				</button>
 				<button
@@ -78,6 +86,10 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
+					<span className="icon" style={{
+						"--icon-fill": textColor ? textColor : '#000',
+						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+					}}>{attributes.resumeIcon && pickIcon(attributes.resumeIcon)}</span>
 					{resumeText}
 				</button>
 				<button
@@ -92,6 +104,10 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
+					<span className="icon" style={{
+						"--icon-fill": textColor ? textColor : '#000',
+						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+					}}>{attributes.stopIcon && pickIcon(attributes.stopIcon)}</span>
 					{stopText}
 				</button>
 			</div>

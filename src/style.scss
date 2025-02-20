@@ -19,6 +19,38 @@
 			&:hover{
 				opacity: .8;
 			}
+
+			& span{
+				& svg{
+					width: var(--icon-size);
+
+					& path{
+						fill: var(--icon-fill);
+					}
+				}
+			}
+		}
+	}
+
+	&__icon-grid{
+		display: flex;
+		flex-flow: row wrap;
+		gap: 16px;
+		margin-bottom: 16px;
+
+		& button{
+			width: 25%;
+			max-width: 88px;
+			padding: 8px;
+			border: 1px solid #e1e1e1;
+			background: white;
+			list-style-type: none;
+			cursor: pointer;
+
+			&:hover{
+				border: 1px solid #111111;
+			}
 		}
 	}
 }
+
