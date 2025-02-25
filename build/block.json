@@ -79,6 +79,10 @@
       "type": "string",
       "default": ""
     },
+    "iconGap": {
+      "type": "string",
+      "default": ""
+    },
     "fontFamily": {
       "type": "string",
       "default": "sans-serif"

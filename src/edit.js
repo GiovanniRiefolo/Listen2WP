@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 /**
  * Retrieves the translation of text.
@@ -14,7 +15,7 @@ import {__} from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps, PanelColorSettings, InspectorControls, ContrastChecker} from '@wordpress/block-editor';
-import {Button, Icon, Modal, PanelBody, PanelRow, TextControl} from '@wordpress/components';
+import {Button, Modal, PanelBody, TextControl} from '@wordpress/components';
 import {__experimentalUnitControl as UnitControl} from '@wordpress/components';
 import {__experimentalBoxControl as BoxControl} from '@wordpress/components';
 import {__experimentalBorderControl as BorderControl} from "@wordpress/components";
@@ -36,7 +37,15 @@ import {
 	PauseIconNormalFilled,
 	PauseIconNormalOutlined,
 	PauseIconRoundedFilled,
-	PauseIconRoundedOutlined
+	PauseIconRoundedOutlined,
+	ResumeIconNormalFilled,
+	ResumeIconNormalOutlined,
+	ResumeIconRoundedFilled,
+	ResumeIconRoundedOutlined,
+	StopIconNormalFilled,
+	StopIconNormalOutlined,
+	StopIconRoundedFilled,
+	StopIconRoundedOutlined
 } from "./icons-library";
 
 /**
@@ -64,10 +73,7 @@ export default function Edit(props) {
 		pauseText = 'Pause',
 		resumeText = 'Resume',
 		stopText = 'Stop',
-		playIcon = "",
-		pauseIcon = "",
-		resumeIcon = "",
-		stopIcon = ""
+		iconGap = '0px'
 	} = attributes;
 
 	const [isOpen, setOpen] = useState(false);
@@ -83,18 +89,19 @@ export default function Edit(props) {
 	};
 
 	const applyChoice = (icon) => {
+	const iconHTML = renderToStaticMarkup(icon);
 		switch (iconType) {
 			case 'playIcon':
-				setAttributes({playIcon: icon});
+				setAttributes({playIcon: iconHTML});
 				break;
 			case 'pauseIcon':
-				setAttributes({pauseIcon: icon});
+				setAttributes({pauseIcon: iconHTML});
 				break;
 			case 'resumeIcon':
-				setAttributes({resumeIcon: icon});
+				setAttributes({resumeIcon: iconHTML});
 				break;
 			case 'stopIcon':
-				setAttributes({stopIcon: icon});
+				setAttributes({stopIcon: iconHTML});
 				break;
 			default:
 				break;
@@ -129,6 +136,30 @@ export default function Edit(props) {
 						</button>
 						<button onClick={() => applyChoice(<PauseIconRoundedOutlined/>)}>
 							<PauseIconRoundedOutlined/>
+						</button>
+						<button onClick={() => applyChoice(<ResumeIconNormalFilled/>)}>
+							<ResumeIconNormalFilled/>
+						</button>
+						<button onClick={() => applyChoice(<ResumeIconNormalOutlined/>)}>
+							<ResumeIconNormalOutlined/>
+						</button>
+						<button onClick={() => applyChoice(<ResumeIconRoundedFilled/>)}>
+							<ResumeIconRoundedFilled/>
+						</button>
+						<button onClick={() => applyChoice(<ResumeIconRoundedOutlined/>)}>
+							<ResumeIconRoundedOutlined/>
+						</button>
+						<button onClick={() => applyChoice(<StopIconNormalFilled/>)}>
+							<StopIconNormalFilled/>
+						</button>
+						<button onClick={() => applyChoice(<StopIconNormalOutlined/>)}>
+							<StopIconNormalOutlined/>
+						</button>
+						<button onClick={() => applyChoice(<StopIconRoundedFilled/>)}>
+							<StopIconRoundedFilled/>
+						</button>
+						<button onClick={() => applyChoice(<StopIconRoundedOutlined/>)}>
+							<StopIconRoundedOutlined/>
 						</button>
 					</div>
 					<Button variant="secondary" onClick={closeModal}>
@@ -214,6 +245,16 @@ export default function Edit(props) {
 							{value: 'em', label: 'em', default: 0},
 						]}
 					/>
+					<UnitControl
+						label={__('Icon spacing', 'l2wp-dev')}
+						value={iconGap}
+						onChange={(newIconGap) => setAttributes({iconGap: newIconGap})}
+						units={[
+							{value: 'px', label: 'px', default: 0},
+							{value: '%', label: '%', default: 0},
+							{value: 'em', label: 'em', default: 0},
+						]}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="settings">
@@ -226,7 +267,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('playIcon')}>
-							Open Library
+							{__('Choose icon', 'l2wp-dev')}
 						</Button>
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
@@ -237,7 +278,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('pauseIcon')}>
-							Open Library
+							{__('Choose icon', 'l2wp-dev')}
 						</Button>
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
@@ -248,7 +289,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('resumeIcon')}>
-							Open Library
+							{__('Choose icon', 'l2wp-dev')}
 						</Button>
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
@@ -259,7 +300,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('stopIcon')}>
-							Open Library
+							{__('Choose icon', 'l2wp-dev')}
 						</Button>
 					</div>
 				</PanelBody>
@@ -272,6 +313,7 @@ export default function Edit(props) {
 						id='l2wp-play-button'
 						style={{
 							display: 'flex',
+							gap: iconGap,
 							backgroundColor,
 							color: textColor,
 							borderColor,
@@ -281,16 +323,20 @@ export default function Edit(props) {
 							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 						}}
 						onClick={playUtterance}>
-						<span className="icon" style={{
-							"--icon-fill": textColor ? textColor : '#000',
-							"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-						}}>{playIcon && playIcon}</span>
+						{attributes.playIcon &&
+							<span className="icon" style={{
+											"--icon-fill": textColor ? textColor : '#000',
+											"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+										}}
+										dangerouslySetInnerHTML={{ __html: attributes.playIcon }}></span>
+						}
 						{playText}
 					</button>
 					<button
 						id='l2wp-pause-button'
 						style={{
 							display: 'flex',
+							gap: iconGap,
 							backgroundColor,
 							color: textColor,
 							borderColor,
@@ -299,15 +345,21 @@ export default function Edit(props) {
 							borderWidth,
 							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 						}} onClick={pauseUtterance}>
-						<span className="icon" style={{
-							"--icon-fill": textColor ? textColor : '#000',
-							"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-						}}>{pauseIcon && pauseIcon}</span>
+						{attributes.pauseIcon &&
+							<span
+								className="icon"
+								style={{
+									"--icon-fill": textColor ? textColor : '#000',
+									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+								}}
+								dangerouslySetInnerHTML={{ __html: attributes.pauseIcon }}>
+							</span>}
 						{pauseText}</button>
 					<button
 						id='l2wp-resume-button'
 						style={{
 							display: 'flex',
+							gap: iconGap,
 							backgroundColor,
 							color: textColor,
 							borderColor,
@@ -317,15 +369,21 @@ export default function Edit(props) {
 							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 						}}
 						onClick={resumeUtterance}>
-						<span className="icon" style={{
-							"--icon-fill": textColor ? textColor : '#000',
-							"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-						}}>{resumeIcon && resumeIcon}</span>
+						{attributes.resumeIcon &&
+							<span
+								className="icon"
+								style={{
+									"--icon-fill": textColor ? textColor : '#000',
+									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+								}}
+								dangerouslySetInnerHTML={{ __html: attributes.resumeIcon }}>
+							</span>}
 						{resumeText}</button>
 					<button
 						id='l2wp-cancel-button'
 						style={{
 							display: 'flex',
+							gap: iconGap,
 							backgroundColor,
 							color: textColor,
 							borderColor,
@@ -335,10 +393,15 @@ export default function Edit(props) {
 							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
 						}}
 						onClick={cancelUtterance}>
-						<span className="icon" style={{
-							"--icon-fill": textColor ? textColor : '#000',
-							"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-						}}>{stopIcon && stopIcon}</span>
+						{attributes.stopIcon &&
+							<span
+								className="icon"
+								style={{
+									"--icon-fill": textColor ? textColor : '#000',
+									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+								}}
+								dangerouslySetInnerHTML={{ __html: attributes.stopIcon }}>
+							</span>}
 						{stopText}</button>
 				</div>
 			</div>

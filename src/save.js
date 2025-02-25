@@ -29,7 +29,8 @@ export default function save({attributes}) {
 		playText = 'Play',
 		pauseText = 'Pause',
 		resumeText = 'Resume',
-		stopText = 'Stop'
+		stopText = 'Stop',
+		iconGap = '0px'
 	} = attributes;
 	const blockProps = useBlockProps.save();
 
@@ -42,6 +43,7 @@ export default function save({attributes}) {
 					id='l2wp-play-button'
 					style={{
 						display: 'flex',
+						gap: iconGap,
 						backgroundColor,
 						color: textColor,
 						borderColor,
@@ -50,16 +52,22 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
-					<span className="icon" style={{
-						"--icon-fill": textColor ? textColor : '#000',
-						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.playIcon && attributes.playIcon}</span>
+					{attributes.playIcon &&
+						<span
+							className="icon"
+							style={{
+								"--icon-fill": textColor ? textColor : '#000',
+								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+							}}
+							dangerouslySetInnerHTML={{ __html: attributes.playIcon }}>
+						</span>}
 					{playText}
 				</button>
 				<button
 					id='l2wp-pause-button'
 					style={{
 						display: 'flex',
+						gap: iconGap,
 						backgroundColor,
 						color: textColor,
 						borderColor,
@@ -68,16 +76,22 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
-					<span className="icon" style={{
-						"--icon-fill": textColor ? textColor : '#000',
-						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.pauseIcon && attributes.pauseIcon}</span>
+					{attributes.pauseIcon &&
+						<span
+							className="icon"
+							style={{
+								"--icon-fill": textColor ? textColor : '#000',
+								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+							}}
+							dangerouslySetInnerHTML={{ __html: attributes.pauseIcon }}>
+						</span>}
 					{pauseText}
 				</button>
 				<button
 					id='l2wp-resume-button'
 					style={{
 						display: 'flex',
+						gap: iconGap,
 						backgroundColor,
 						color: textColor,
 						borderColor,
@@ -86,16 +100,22 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
-					<span className="icon" style={{
-						"--icon-fill": textColor ? textColor : '#000',
-						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.resumeIcon && attributes.resumeIcon}</span>
+					{attributes.resumeIcon &&
+						<span
+							className="icon"
+							style={{
+								"--icon-fill": textColor ? textColor : '#000',
+								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+							}}
+							dangerouslySetInnerHTML={{ __html: attributes.resumeIcon }}>
+						</span>}
 					{resumeText}
 				</button>
 				<button
 					id='l2wp-cancel-button'
 					style={{
 						display: 'flex',
+						gap: iconGap,
 						backgroundColor,
 						color: textColor,
 						borderColor,
@@ -104,10 +124,15 @@ export default function save({attributes}) {
 						borderWidth,
 						padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`
 					}}>
-					<span className="icon" style={{
-						"--icon-fill": textColor ? textColor : '#000',
-						"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-					}}>{attributes.stopIcon && attributes.stopIcon}</span>
+					{attributes.stopIcon &&
+						<span
+							className="icon"
+							style={{
+								"--icon-fill": textColor ? textColor : '#000',
+								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
+							}}
+							dangerouslySetInnerHTML={{ __html: attributes.stopIcon }}>
+						</span>}
 					{stopText}
 				</button>
 			</div>
