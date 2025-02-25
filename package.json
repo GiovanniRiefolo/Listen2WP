@@ -1,8 +1,8 @@
 {
-	"name": "l2wp-dev",
+	"name": "listen2wp",
 	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "Listen2WP is a free accessibility plugin that provides text-to-speech functionality through a fully customizable Gutenberg block.",
+	"author": "Giovanni Riefolo",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {

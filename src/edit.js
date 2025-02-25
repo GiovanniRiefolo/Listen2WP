@@ -169,18 +169,18 @@ export default function Edit(props) {
 			)}
 			<InspectorControls group="styles">
 				<PanelColorSettings
-					title={__('Colors', 'l2wp-dev')}
+					title={__('Colors', 'listen2wp')}
 					initialOpen={true}
 					colorSettings={[
 						{
 							value: textColor,
 							onChange: (color) => setAttributes({textColor: color}),
-							label: __('Text', 'l2wp-dev')
+							label: __('Text', 'listen2wp')
 						},
 						{
 							value: backgroundColor,
 							onChange: (color) => setAttributes({backgroundColor: color}),
-							label: __('Background', 'l2wp-dev')
+							label: __('Background', 'listen2wp')
 						}
 					]}>
 					<ContrastChecker
@@ -188,9 +188,9 @@ export default function Edit(props) {
 						backgroundColor={backgroundColor}
 					/>
 				</PanelColorSettings>
-				<PanelBody title={__('Borders', 'l2wp-dev')}>
+				<PanelBody title={__('Borders', 'listen2wp')}>
 					<UnitControl
-						label={__('Border Radius', 'l2wp-dev')}
+						label={__('Border Radius', 'listen2wp')}
 						value={borderRadius}
 						onChange={(newRadius) => setAttributes({borderRadius: newRadius})}
 						units={[
@@ -200,7 +200,7 @@ export default function Edit(props) {
 						]}
 					/>
 					<BorderControl
-						label={__('Border', 'l2wp-dev')}
+						label={__('Border', 'listen2wp')}
 						value={{
 							style: borderStyle,
 							width: borderWidth,
@@ -215,9 +215,9 @@ export default function Edit(props) {
 						}}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Padding', 'l2wp-dev')}>
+				<PanelBody title={__('Padding', 'listen2wp')}>
 					<BoxControl
-						label={__('Padding', 'l2wp-dev')}
+						label={__('Padding', 'listen2wp')}
 						values={padding}
 						splitOnAxis={true}
 						onChange={(newPadding) => setAttributes({padding: newPadding})}
@@ -228,9 +228,9 @@ export default function Edit(props) {
 						]}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Dimensions', 'l2wp-dev')}>
+				<PanelBody title={__('Dimensions', 'listen2wp')}>
 					<BoxControl
-						label={__('Block Spaces', 'l2wp-dev')}
+						label={__('Block Spaces', 'listen2wp')}
 						values={columnGap}
 						splitOnAxis={true}
 						onChange={(newGap) => {
@@ -246,7 +246,7 @@ export default function Edit(props) {
 						]}
 					/>
 					<UnitControl
-						label={__('Icon spacing', 'l2wp-dev')}
+						label={__('Icon spacing', 'listen2wp')}
 						value={iconGap}
 						onChange={(newIconGap) => setAttributes({iconGap: newIconGap})}
 						units={[
@@ -258,7 +258,7 @@ export default function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="settings">
-				<PanelBody title={__('Content', 'l2wp-dev')}>
+				<PanelBody title={__('Content', 'listen2wp')}>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
 						<TextControl
 							label="Play Text"
@@ -267,7 +267,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('playIcon')}>
-							{__('Choose icon', 'l2wp-dev')}
+							{__('Choose icon', 'listen2wp')}
 						</Button>
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
@@ -278,7 +278,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('pauseIcon')}>
-							{__('Choose icon', 'l2wp-dev')}
+							{__('Choose icon', 'listen2wp')}
 						</Button>
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
@@ -289,7 +289,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('resumeIcon')}>
-							{__('Choose icon', 'l2wp-dev')}
+							{__('Choose icon', 'listen2wp')}
 						</Button>
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
@@ -300,7 +300,7 @@ export default function Edit(props) {
 						/>
 						<Button variant="secondary" size="compact"
 										onClick={() => openModal('stopIcon')}>
-							{__('Choose icon', 'l2wp-dev')}
+							{__('Choose icon', 'listen2wp')}
 						</Button>
 					</div>
 				</PanelBody>

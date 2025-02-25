@@ -1,2 +1,2 @@
 # Listen2WP
-Open source text-to-speech plugin for WordPress
+Listen2WP is a free accessibility plugin that provides text-to-speech functionality through a fully customizable Gutenberg block.
