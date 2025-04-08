@@ -41,6 +41,8 @@ export default function save({attributes}) {
 				style={{columnGap: columnGap.left}}>
 				<button
 					id='l2wp-play-button'
+					aria-label={playText}
+					type="button"
 					style={{
 						display: 'flex',
 						gap: iconGap,
@@ -59,12 +61,14 @@ export default function save({attributes}) {
 								"--icon-fill": textColor ? textColor : '#000',
 								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 							}}
-							dangerouslySetInnerHTML={{ __html: attributes.playIcon }}>
+							dangerouslySetInnerHTML={{__html: attributes.playIcon}}>
 						</span>}
 					{playText}
 				</button>
 				<button
 					id='l2wp-pause-button'
+					aria-label={pauseText}
+					type="button"
 					style={{
 						display: 'flex',
 						gap: iconGap,
@@ -83,12 +87,14 @@ export default function save({attributes}) {
 								"--icon-fill": textColor ? textColor : '#000',
 								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 							}}
-							dangerouslySetInnerHTML={{ __html: attributes.pauseIcon }}>
+							dangerouslySetInnerHTML={{__html: attributes.pauseIcon}}>
 						</span>}
 					{pauseText}
 				</button>
 				<button
 					id='l2wp-resume-button'
+					aria-label={resumeText}
+					type="button"
 					style={{
 						display: 'flex',
 						gap: iconGap,
@@ -107,12 +113,14 @@ export default function save({attributes}) {
 								"--icon-fill": textColor ? textColor : '#000',
 								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 							}}
-							dangerouslySetInnerHTML={{ __html: attributes.resumeIcon }}>
+							dangerouslySetInnerHTML={{__html: attributes.resumeIcon}}>
 						</span>}
 					{resumeText}
 				</button>
 				<button
 					id='l2wp-cancel-button'
+					aria-label={stopText}
+					type="button"
 					style={{
 						display: 'flex',
 						gap: iconGap,
@@ -131,7 +139,7 @@ export default function save({attributes}) {
 								"--icon-fill": textColor ? textColor : '#000',
 								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 							}}
-							dangerouslySetInnerHTML={{ __html: attributes.stopIcon }}>
+							dangerouslySetInnerHTML={{__html: attributes.stopIcon}}>
 						</span>}
 					{stopText}
 				</button>

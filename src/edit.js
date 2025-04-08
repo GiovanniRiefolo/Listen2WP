@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import {useState} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
 
 /**
  * Retrieves the translation of text.
@@ -78,7 +78,73 @@ export default function Edit(props) {
 
 	const [isOpen, setOpen] = useState(false);
 	const [iconType, setIconType] = useState('')
-
+	const [selected, setSelected] = useState('')
+const buttonList = [
+						  {
+						    value: 'playNormalFilled',
+						    component: <PlayIconNormalFilled />
+						  },
+						  {
+						    value: 'playNormalOutlined',
+						    component: <PlayIconNormalOutlined />
+						  },
+						  {
+						    value: 'playRoundedFilled',
+						    component: <PlayIconRoundedFilled />
+						  },
+						  {
+						    value: 'playRoundedOutlined',
+						    component: <PlayIconRoundedOutlined />
+						  },
+						  {
+						    value: 'pauseNormalFilled',
+						    component: <PauseIconNormalFilled />
+						  },
+						  {
+						    value: 'pauseNormalOutlined',
+						    component: <PauseIconNormalOutlined />
+						  },
+						  {
+						    value: 'pauseRoundedFilled',
+						    component: <PauseIconRoundedFilled />
+						  },
+						  {
+						    value: 'pauseRoundedOutlined',
+						    component: <PauseIconRoundedOutlined />
+						  },
+						  {
+						    value: 'resumeNormalFilled',
+						    component: <ResumeIconNormalFilled />
+						  },
+						  {
+						    value: 'resumeNormalOutlined',
+						    component: <ResumeIconNormalOutlined />
+						  },
+						  {
+						    value: 'resumeRoundedFilled',
+						    component: <ResumeIconRoundedFilled />
+						  },
+						  {
+						    value: 'resumeRoundedOutlined',
+						    component: <ResumeIconRoundedOutlined />
+						  },
+						  {
+						    value: 'stopNormalFilled',
+						    component: <StopIconNormalFilled />
+						  },
+						  {
+						    value: 'stopNormalOutlined',
+						    component: <StopIconNormalOutlined />
+						  },
+						  {
+						    value: 'stopRoundedFilled',
+						    component: <StopIconRoundedFilled />
+						  },
+						  {
+						    value: 'stopRoundedOutlined',
+						    component: <StopIconRoundedOutlined />
+						  }
+						]
 	const openModal = (type) => {
 		setOpen(true)
 		setIconType(type)
@@ -87,9 +153,8 @@ export default function Edit(props) {
 		setOpen(false)
 		setIconType('')
 	};
-
 	const applyChoice = (icon) => {
-	const iconHTML = renderToStaticMarkup(icon);
+		const iconHTML = renderToStaticMarkup(icon);
 		switch (iconType) {
 			case 'playIcon':
 				setAttributes({playIcon: iconHTML});
@@ -113,54 +178,19 @@ export default function Edit(props) {
 			{isOpen && (
 				<Modal title="Select icon" onRequestClose={closeModal}>
 					<div className="wp-block-rdev-l2wp__icon-grid">
-						<button onClick={() => applyChoice(<PlayIconNormalFilled/>)}>
-							<PlayIconNormalFilled/>
-						</button>
-						<button onClick={() => applyChoice(<PlayIconNormalOutlined/>)}>
-							<PlayIconNormalOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<PlayIconRoundedFilled/>)}>
-							<PlayIconRoundedFilled/>
-						</button>
-						<button onClick={() => applyChoice(<PlayIconRoundedOutlined/>)}>
-							<PlayIconRoundedOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<PauseIconNormalFilled/>)}>
-							<PauseIconNormalFilled/>
-						</button>
-						<button onClick={() => applyChoice(<PauseIconNormalOutlined/>)}>
-							<PauseIconNormalOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<PauseIconRoundedFilled/>)}>
-							<PauseIconRoundedFilled/>
-						</button>
-						<button onClick={() => applyChoice(<PauseIconRoundedOutlined/>)}>
-							<PauseIconRoundedOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<ResumeIconNormalFilled/>)}>
-							<ResumeIconNormalFilled/>
-						</button>
-						<button onClick={() => applyChoice(<ResumeIconNormalOutlined/>)}>
-							<ResumeIconNormalOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<ResumeIconRoundedFilled/>)}>
-							<ResumeIconRoundedFilled/>
-						</button>
-						<button onClick={() => applyChoice(<ResumeIconRoundedOutlined/>)}>
-							<ResumeIconRoundedOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<StopIconNormalFilled/>)}>
-							<StopIconNormalFilled/>
-						</button>
-						<button onClick={() => applyChoice(<StopIconNormalOutlined/>)}>
-							<StopIconNormalOutlined/>
-						</button>
-						<button onClick={() => applyChoice(<StopIconRoundedFilled/>)}>
-							<StopIconRoundedFilled/>
-						</button>
-						<button onClick={() => applyChoice(<StopIconRoundedOutlined/>)}>
-							<StopIconRoundedOutlined/>
-						</button>
+						{buttonList.map(({ value, component, index }) => (
+						  <button
+						    key={index}
+						    value={value}
+						    className={selected === value ? 'selected' : ''}
+						    onClick={() => {
+									setSelected(value)
+									applyChoice(component)
+								}}
+						  >
+						    {component}
+						  </button>
+						))}
 					</div>
 					<Button variant="secondary" onClick={closeModal}>
 						Close
@@ -265,10 +295,17 @@ export default function Edit(props) {
 							value={playText}
 							onChange={(value) => setAttributes({playText: value})}
 						/>
-						<Button variant="secondary" size="compact"
-										onClick={() => openModal('playIcon')}>
-							{__('Choose icon', 'listen2wp')}
-						</Button>
+						{attributes.playIcon ?
+							<Button variant="secondary" size="compact"
+											onClick={() => setAttributes({playIcon: null})}>
+								{__('Remove icon', 'listen2wp')}
+							</Button>
+							:
+							<Button variant="secondary" size="compact"
+											onClick={() => openModal('playIcon')}>
+								{__('Choose icon', 'listen2wp')}
+							</Button>
+						}
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
 						<TextControl
@@ -276,10 +313,17 @@ export default function Edit(props) {
 							value={pauseText}
 							onChange={(value) => setAttributes({pauseText: value})}
 						/>
-						<Button variant="secondary" size="compact"
-										onClick={() => openModal('pauseIcon')}>
-							{__('Choose icon', 'listen2wp')}
-						</Button>
+						{attributes.pauseIcon ?
+							<Button variant="secondary" size="compact"
+											onClick={() => setAttributes({pauseIcon: null})}>
+								{__('Remove icon', 'listen2wp')}
+							</Button>
+							:
+							<Button variant="secondary" size="compact"
+											onClick={() => openModal('pauseIcon')}>
+								{__('Choose icon', 'listen2wp')}
+							</Button>
+						}
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
 						<TextControl
@@ -287,10 +331,17 @@ export default function Edit(props) {
 							value={resumeText}
 							onChange={(value) => setAttributes({resumeText: value})}
 						/>
-						<Button variant="secondary" size="compact"
-										onClick={() => openModal('resumeIcon')}>
-							{__('Choose icon', 'listen2wp')}
-						</Button>
+						{attributes.resumeIcon ?
+							<Button variant="secondary" size="compact"
+											onClick={() => setAttributes({resumeIcon: null})}>
+								{__('Remove icon', 'listen2wp')}
+							</Button>
+							:
+							<Button variant="secondary" size="compact"
+											onClick={() => openModal('resumeIcon')}>
+								{__('Choose icon', 'listen2wp')}
+							</Button>
+						}
 					</div>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
 						<TextControl
@@ -298,10 +349,17 @@ export default function Edit(props) {
 							value={stopText}
 							onChange={(value) => setAttributes({stopText: value})}
 						/>
-						<Button variant="secondary" size="compact"
-										onClick={() => openModal('stopIcon')}>
-							{__('Choose icon', 'listen2wp')}
-						</Button>
+						{attributes.stopIcon ?
+							<Button variant="secondary" size="compact"
+											onClick={() => setAttributes({stopIcon: null})}>
+								{__('Remove icon', 'listen2wp')}
+							</Button>
+							:
+							<Button variant="secondary" size="compact"
+											onClick={() => openModal('stopIcon')}>
+								{__('Choose icon', 'listen2wp')}
+							</Button>
+						}
 					</div>
 				</PanelBody>
 			</InspectorControls>
@@ -311,6 +369,8 @@ export default function Edit(props) {
 					style={{columnGap: columnGap.left}}>
 					<button
 						id='l2wp-play-button'
+						aria-label={playText}
+						type="button"
 						style={{
 							display: 'flex',
 							gap: iconGap,
@@ -325,15 +385,17 @@ export default function Edit(props) {
 						onClick={playUtterance}>
 						{attributes.playIcon &&
 							<span className="icon" style={{
-											"--icon-fill": textColor ? textColor : '#000',
-											"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-										}}
-										dangerouslySetInnerHTML={{ __html: attributes.playIcon }}></span>
+								"--icon-fill": textColor ? textColor : '#000',
+								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+							}}
+										dangerouslySetInnerHTML={{__html: attributes.playIcon}}></span>
 						}
 						{playText}
 					</button>
 					<button
 						id='l2wp-pause-button'
+						aria-label={pauseText}
+						type="button"
 						style={{
 							display: 'flex',
 							gap: iconGap,
@@ -352,11 +414,13 @@ export default function Edit(props) {
 									"--icon-fill": textColor ? textColor : '#000',
 									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 								}}
-								dangerouslySetInnerHTML={{ __html: attributes.pauseIcon }}>
+								dangerouslySetInnerHTML={{__html: attributes.pauseIcon}}>
 							</span>}
 						{pauseText}</button>
 					<button
 						id='l2wp-resume-button'
+						aria-label={resumeText}
+						type="button"
 						style={{
 							display: 'flex',
 							gap: iconGap,
@@ -376,11 +440,13 @@ export default function Edit(props) {
 									"--icon-fill": textColor ? textColor : '#000',
 									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 								}}
-								dangerouslySetInnerHTML={{ __html: attributes.resumeIcon }}>
+								dangerouslySetInnerHTML={{__html: attributes.resumeIcon}}>
 							</span>}
 						{resumeText}</button>
 					<button
 						id='l2wp-cancel-button'
+						aria-label={stopText}
+						type="button"
 						style={{
 							display: 'flex',
 							gap: iconGap,
@@ -400,7 +466,7 @@ export default function Edit(props) {
 									"--icon-fill": textColor ? textColor : '#000',
 									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px",
 								}}
-								dangerouslySetInnerHTML={{ __html: attributes.stopIcon }}>
+								dangerouslySetInnerHTML={{__html: attributes.stopIcon}}>
 							</span>}
 						{stopText}</button>
 				</div>
