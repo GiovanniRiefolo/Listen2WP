@@ -5,6 +5,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {useBlockProps} from '@wordpress/block-editor';
+import {__} from "@wordpress/i18n";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -37,11 +38,13 @@ export default function save({attributes}) {
 	return (
 		<div {...blockProps}>
 			<div
+				role="group"
+				aria-label={__('Text to speech controls', 'listen2wp')}
 				className="wp-block-rdev-l2wp__buttons"
 				style={{columnGap: columnGap.left}}>
 				<button
 					id='l2wp-play-button'
-					aria-label={playText}
+					{...(playText && playText !== '' ? {} : {'aria-label': __('Play', 'listen2wp')})}
 					type="button"
 					style={{
 						display: 'flex',
@@ -56,6 +59,7 @@ export default function save({attributes}) {
 					}}>
 					{attributes.playIcon &&
 						<span
+							aria-hidden="true"
 							className="icon"
 							style={{
 								"--icon-fill": textColor ? textColor : '#000',
@@ -67,7 +71,7 @@ export default function save({attributes}) {
 				</button>
 				<button
 					id='l2wp-pause-button'
-					aria-label={pauseText}
+					{...(pauseText && pauseText !== '' ? {} : {'aria-label': __('Pause', 'listen2wp')})}
 					type="button"
 					style={{
 						display: 'flex',
@@ -82,6 +86,7 @@ export default function save({attributes}) {
 					}}>
 					{attributes.pauseIcon &&
 						<span
+							aria-hidden="true"
 							className="icon"
 							style={{
 								"--icon-fill": textColor ? textColor : '#000',
@@ -93,7 +98,7 @@ export default function save({attributes}) {
 				</button>
 				<button
 					id='l2wp-resume-button'
-					aria-label={resumeText}
+					{...(resumeText && resumeText !== '' ? {} : {'aria-label': __('Resume', 'listen2wp')})}
 					type="button"
 					style={{
 						display: 'flex',
@@ -108,6 +113,7 @@ export default function save({attributes}) {
 					}}>
 					{attributes.resumeIcon &&
 						<span
+							aria-hidden="true"
 							className="icon"
 							style={{
 								"--icon-fill": textColor ? textColor : '#000',
@@ -119,7 +125,7 @@ export default function save({attributes}) {
 				</button>
 				<button
 					id='l2wp-cancel-button'
-					aria-label={stopText}
+					{...(stopText && stopText !== '' ? {} : {'aria-label': __('Stop', 'listen2wp')} )}
 					type="button"
 					style={{
 						display: 'flex',
@@ -134,6 +140,7 @@ export default function save({attributes}) {
 					}}>
 					{attributes.stopIcon &&
 						<span
+							aria-hidden="true"
 							className="icon"
 							style={{
 								"--icon-fill": textColor ? textColor : '#000',

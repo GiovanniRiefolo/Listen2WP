@@ -79,72 +79,72 @@ export default function Edit(props) {
 	const [isOpen, setOpen] = useState(false);
 	const [iconType, setIconType] = useState('')
 	const [selected, setSelected] = useState('')
-const buttonList = [
-						  {
-						    value: 'playNormalFilled',
-						    component: <PlayIconNormalFilled />
-						  },
-						  {
-						    value: 'playNormalOutlined',
-						    component: <PlayIconNormalOutlined />
-						  },
-						  {
-						    value: 'playRoundedFilled',
-						    component: <PlayIconRoundedFilled />
-						  },
-						  {
-						    value: 'playRoundedOutlined',
-						    component: <PlayIconRoundedOutlined />
-						  },
-						  {
-						    value: 'pauseNormalFilled',
-						    component: <PauseIconNormalFilled />
-						  },
-						  {
-						    value: 'pauseNormalOutlined',
-						    component: <PauseIconNormalOutlined />
-						  },
-						  {
-						    value: 'pauseRoundedFilled',
-						    component: <PauseIconRoundedFilled />
-						  },
-						  {
-						    value: 'pauseRoundedOutlined',
-						    component: <PauseIconRoundedOutlined />
-						  },
-						  {
-						    value: 'resumeNormalFilled',
-						    component: <ResumeIconNormalFilled />
-						  },
-						  {
-						    value: 'resumeNormalOutlined',
-						    component: <ResumeIconNormalOutlined />
-						  },
-						  {
-						    value: 'resumeRoundedFilled',
-						    component: <ResumeIconRoundedFilled />
-						  },
-						  {
-						    value: 'resumeRoundedOutlined',
-						    component: <ResumeIconRoundedOutlined />
-						  },
-						  {
-						    value: 'stopNormalFilled',
-						    component: <StopIconNormalFilled />
-						  },
-						  {
-						    value: 'stopNormalOutlined',
-						    component: <StopIconNormalOutlined />
-						  },
-						  {
-						    value: 'stopRoundedFilled',
-						    component: <StopIconRoundedFilled />
-						  },
-						  {
-						    value: 'stopRoundedOutlined',
-						    component: <StopIconRoundedOutlined />
-						  }
-						]
+	const buttonList = [
+		{
+			value: 'playNormalFilled',
+			component: <PlayIconNormalFilled/>
+		},
+		{
+			value: 'playNormalOutlined',
+			component: <PlayIconNormalOutlined/>
+		},
+		{
+			value: 'playRoundedFilled',
+			component: <PlayIconRoundedFilled/>
+		},
+		{
+			value: 'playRoundedOutlined',
+			component: <PlayIconRoundedOutlined/>
+		},
+		{
+			value: 'pauseNormalFilled',
+			component: <PauseIconNormalFilled/>
+		},
+		{
+			value: 'pauseNormalOutlined',
+			component: <PauseIconNormalOutlined/>
+		},
+		{
+			value: 'pauseRoundedFilled',
+			component: <PauseIconRoundedFilled/>
+		},
+		{
+			value: 'pauseRoundedOutlined',
+			component: <PauseIconRoundedOutlined/>
+		},
+		{
+			value: 'resumeNormalFilled',
+			component: <ResumeIconNormalFilled/>
+		},
+		{
+			value: 'resumeNormalOutlined',
+			component: <ResumeIconNormalOutlined/>
+		},
+		{
+			value: 'resumeRoundedFilled',
+			component: <ResumeIconRoundedFilled/>
+		},
+		{
+			value: 'resumeRoundedOutlined',
+			component: <ResumeIconRoundedOutlined/>
+		},
+		{
+			value: 'stopNormalFilled',
+			component: <StopIconNormalFilled/>
+		},
+		{
+			value: 'stopNormalOutlined',
+			component: <StopIconNormalOutlined/>
+		},
+		{
+			value: 'stopRoundedFilled',
+			component: <StopIconRoundedFilled/>
+		},
+		{
+			value: 'stopRoundedOutlined',
+			component: <StopIconRoundedOutlined/>
+		}
+	]
 	const openModal = (type) => {
 		setOpen(true)
 		setIconType(type)
@@ -178,18 +178,18 @@ const buttonList = [
 			{isOpen && (
 				<Modal title="Select icon" onRequestClose={closeModal}>
 					<div className="wp-block-rdev-l2wp__icon-grid">
-						{buttonList.map(({ value, component, index }) => (
-						  <button
-						    key={index}
-						    value={value}
-						    className={selected === value ? 'selected' : ''}
-						    onClick={() => {
+						{buttonList.map(({value, component, index}) => (
+							<button
+								key={index}
+								value={value}
+								className={selected === value ? 'selected' : ''}
+								onClick={() => {
 									setSelected(value)
 									applyChoice(component)
 								}}
-						  >
-						    {component}
-						  </button>
+							>
+								{component}
+							</button>
 						))}
 					</div>
 					<Button variant="secondary" onClick={closeModal}>
@@ -365,11 +365,13 @@ const buttonList = [
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<div
+					role="group"
+					aria-label={__('Text to speech controls', 'listen2wp')}
 					className="wp-block-rdev-l2wp__buttons"
 					style={{columnGap: columnGap.left}}>
 					<button
 						id='l2wp-play-button'
-						aria-label={playText}
+						{...(playText && playText !== '' ? {} : { 'aria-label': __('Play', 'listen2wp') })}
 						type="button"
 						style={{
 							display: 'flex',
@@ -384,17 +386,20 @@ const buttonList = [
 						}}
 						onClick={playUtterance}>
 						{attributes.playIcon &&
-							<span className="icon" style={{
-								"--icon-fill": textColor ? textColor : '#000',
-								"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
-							}}
-										dangerouslySetInnerHTML={{__html: attributes.playIcon}}></span>
+							<span
+								aria-hidden="true"
+								className="icon"
+								style={{
+									"--icon-fill": textColor ? textColor : '#000',
+									"--icon-size": attributes.fontSize ? attributes.fontSize : "14px"
+								}}
+								dangerouslySetInnerHTML={{__html: attributes.playIcon}}></span>
 						}
 						{playText}
 					</button>
 					<button
 						id='l2wp-pause-button'
-						aria-label={pauseText}
+						{...(pauseText && pauseText !== '' ? {} : { 'aria-label': __('Pause', 'listen2wp') } )}
 						type="button"
 						style={{
 							display: 'flex',
@@ -406,9 +411,11 @@ const buttonList = [
 							borderStyle,
 							borderWidth,
 							padding: `${padding.top} ${padding.right} ${padding.bottom} ${padding.left}`,
-						}} onClick={pauseUtterance}>
+						}}
+						onClick={pauseUtterance}>
 						{attributes.pauseIcon &&
 							<span
+								aria-hidden="true"
 								className="icon"
 								style={{
 									"--icon-fill": textColor ? textColor : '#000',
@@ -419,7 +426,7 @@ const buttonList = [
 						{pauseText}</button>
 					<button
 						id='l2wp-resume-button'
-						aria-label={resumeText}
+						{...(resumeText && resumeText !== '' ? {} : { 'aria-label': __('Resume', 'listen2wp') })}
 						type="button"
 						style={{
 							display: 'flex',
@@ -435,6 +442,7 @@ const buttonList = [
 						onClick={resumeUtterance}>
 						{attributes.resumeIcon &&
 							<span
+								aria-hidden="true"
 								className="icon"
 								style={{
 									"--icon-fill": textColor ? textColor : '#000',
@@ -445,7 +453,7 @@ const buttonList = [
 						{resumeText}</button>
 					<button
 						id='l2wp-cancel-button'
-						aria-label={stopText}
+						{...(stopText && stopText !== '' ? {} : { 'aria-label': __('Stop', 'listen2wp') })}
 						type="button"
 						style={{
 							display: 'flex',
@@ -461,6 +469,7 @@ const buttonList = [
 						onClick={cancelUtterance}>
 						{attributes.stopIcon &&
 							<span
+								aria-hidden="true"
 								className="icon"
 								style={{
 									"--icon-fill": textColor ? textColor : '#000',
