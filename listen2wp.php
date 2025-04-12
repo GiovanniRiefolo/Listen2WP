@@ -4,7 +4,8 @@
  * Description:       Listen2WP is a free accessibility plugin that provides text-to-speech functionality through a fully customizable Gutenberg block.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Tested up to:			6.7 
+ * Version:           1.0.0
  * Author:            The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

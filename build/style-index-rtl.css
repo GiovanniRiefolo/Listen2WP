@@ -1,1 +1,54 @@
-.wp-block-rdev-l2wp__buttons{display:flex;flex-flow:row nowrap;width:100%}.wp-block-rdev-l2wp__buttons button{cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit}.wp-block-rdev-l2wp__buttons button:hover{opacity:.8}.wp-block-rdev-l2wp__buttons button span svg{width:var(--icon-size)}.wp-block-rdev-l2wp__buttons button span svg path{fill:var(--icon-fill)}.wp-block-rdev-l2wp__icon-grid{display:flex;flex-flow:row wrap;gap:1rem;margin-bottom:1rem;max-width:30rem}.wp-block-rdev-l2wp__icon-grid button{background:#fff;border:1px solid #e1e1e1;cursor:pointer;list-style-type:none;max-width:2.5rem;padding:.5rem;width:16.666%}.wp-block-rdev-l2wp__icon-grid button:hover{border:1px solid #111}.wp-block-rdev-l2wp__icon-grid button.selected{background:#111}.wp-block-rdev-l2wp__icon-grid button.selected svg path{fill:#fff}
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-rdev-l2wp__buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}
+.wp-block-rdev-l2wp__buttons button {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}
+.wp-block-rdev-l2wp__buttons button:hover {
+  opacity: 0.8;
+}
+.wp-block-rdev-l2wp__buttons button span svg {
+  width: var(--icon-size);
+}
+.wp-block-rdev-l2wp__buttons button span svg path {
+  fill: var(--icon-fill);
+}
+.wp-block-rdev-l2wp__icon-grid {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  max-width: 30rem;
+}
+.wp-block-rdev-l2wp__icon-grid button {
+  width: 16.666%;
+  max-width: 2.5rem;
+  padding: 0.5rem;
+  border: 1px solid #e1e1e1;
+  background: white;
+  list-style-type: none;
+  cursor: pointer;
+}
+.wp-block-rdev-l2wp__icon-grid button:hover {
+  border: 1px solid #111111;
+}
+.wp-block-rdev-l2wp__icon-grid button.selected {
+  background: #111111;
+}
+.wp-block-rdev-l2wp__icon-grid button.selected svg path {
+  fill: #ffffff;
+}

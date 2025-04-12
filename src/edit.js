@@ -199,18 +199,18 @@ export default function Edit(props) {
 			)}
 			<InspectorControls group="styles">
 				<PanelColorSettings
-					title={__('Colors', 'listen2wp')}
+					title={__('Colors', 'Listen2WP')}
 					initialOpen={true}
 					colorSettings={[
 						{
 							value: textColor,
 							onChange: (color) => setAttributes({textColor: color}),
-							label: __('Text', 'listen2wp')
+							label: __('Text', 'Listen2WP')
 						},
 						{
 							value: backgroundColor,
 							onChange: (color) => setAttributes({backgroundColor: color}),
-							label: __('Background', 'listen2wp')
+							label: __('Background', 'Listen2WP')
 						}
 					]}>
 					<ContrastChecker
@@ -218,9 +218,9 @@ export default function Edit(props) {
 						backgroundColor={backgroundColor}
 					/>
 				</PanelColorSettings>
-				<PanelBody title={__('Borders', 'listen2wp')}>
+				<PanelBody title={__('Borders', 'Listen2WP')}>
 					<UnitControl
-						label={__('Border Radius', 'listen2wp')}
+						label={__('Border Radius', 'Listen2WP')}
 						value={borderRadius}
 						onChange={(newRadius) => setAttributes({borderRadius: newRadius})}
 						units={[
@@ -230,7 +230,7 @@ export default function Edit(props) {
 						]}
 					/>
 					<BorderControl
-						label={__('Border', 'listen2wp')}
+						label={__('Border', 'Listen2WP')}
 						value={{
 							style: borderStyle,
 							width: borderWidth,
@@ -245,9 +245,9 @@ export default function Edit(props) {
 						}}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Padding', 'listen2wp')}>
+				<PanelBody title={__('Padding', 'Listen2WP')}>
 					<BoxControl
-						label={__('Padding', 'listen2wp')}
+						label={__('Padding', 'Listen2WP')}
 						values={padding}
 						splitOnAxis={true}
 						onChange={(newPadding) => setAttributes({padding: newPadding})}
@@ -258,9 +258,9 @@ export default function Edit(props) {
 						]}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Dimensions', 'listen2wp')}>
+				<PanelBody title={__('Dimensions', 'Listen2WP')}>
 					<BoxControl
-						label={__('Block Spaces', 'listen2wp')}
+						label={__('Block Spaces', 'Listen2WP')}
 						values={columnGap}
 						splitOnAxis={true}
 						onChange={(newGap) => {
@@ -276,7 +276,7 @@ export default function Edit(props) {
 						]}
 					/>
 					<UnitControl
-						label={__('Icon spacing', 'listen2wp')}
+						label={__('Icon spacing', 'Listen2WP')}
 						value={iconGap}
 						onChange={(newIconGap) => setAttributes({iconGap: newIconGap})}
 						units={[
@@ -288,7 +288,7 @@ export default function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls group="settings">
-				<PanelBody title={__('Content', 'listen2wp')}>
+				<PanelBody title={__('Content', 'Listen2WP')}>
 					<div style={{display: 'flex', gap: '8px', flexFlow: 'row nowrap', alignItems: 'center'}}>
 						<TextControl
 							label="Play Text"
@@ -298,12 +298,12 @@ export default function Edit(props) {
 						{attributes.playIcon ?
 							<Button variant="secondary" size="compact"
 											onClick={() => setAttributes({playIcon: null})}>
-								{__('Remove icon', 'listen2wp')}
+								{__('Remove icon', 'Listen2WP')}
 							</Button>
 							:
 							<Button variant="secondary" size="compact"
 											onClick={() => openModal('playIcon')}>
-								{__('Choose icon', 'listen2wp')}
+								{__('Choose icon', 'Listen2WP')}
 							</Button>
 						}
 					</div>
@@ -316,12 +316,12 @@ export default function Edit(props) {
 						{attributes.pauseIcon ?
 							<Button variant="secondary" size="compact"
 											onClick={() => setAttributes({pauseIcon: null})}>
-								{__('Remove icon', 'listen2wp')}
+								{__('Remove icon', 'Listen2WP')}
 							</Button>
 							:
 							<Button variant="secondary" size="compact"
 											onClick={() => openModal('pauseIcon')}>
-								{__('Choose icon', 'listen2wp')}
+								{__('Choose icon', 'Listen2WP')}
 							</Button>
 						}
 					</div>
@@ -334,12 +334,12 @@ export default function Edit(props) {
 						{attributes.resumeIcon ?
 							<Button variant="secondary" size="compact"
 											onClick={() => setAttributes({resumeIcon: null})}>
-								{__('Remove icon', 'listen2wp')}
+								{__('Remove icon', 'Listen2WP')}
 							</Button>
 							:
 							<Button variant="secondary" size="compact"
 											onClick={() => openModal('resumeIcon')}>
-								{__('Choose icon', 'listen2wp')}
+								{__('Choose icon', 'Listen2WP')}
 							</Button>
 						}
 					</div>
@@ -352,12 +352,12 @@ export default function Edit(props) {
 						{attributes.stopIcon ?
 							<Button variant="secondary" size="compact"
 											onClick={() => setAttributes({stopIcon: null})}>
-								{__('Remove icon', 'listen2wp')}
+								{__('Remove icon', 'Listen2WP')}
 							</Button>
 							:
 							<Button variant="secondary" size="compact"
 											onClick={() => openModal('stopIcon')}>
-								{__('Choose icon', 'listen2wp')}
+								{__('Choose icon', 'Listen2WP')}
 							</Button>
 						}
 					</div>
@@ -366,12 +366,12 @@ export default function Edit(props) {
 			<div {...useBlockProps()}>
 				<div
 					role="group"
-					aria-label={__('Text to speech controls', 'listen2wp')}
+					aria-label={__('Text to speech controls', 'Listen2WP')}
 					className="wp-block-rdev-l2wp__buttons"
 					style={{columnGap: columnGap.left}}>
 					<button
 						id='l2wp-play-button'
-						{...(playText && playText !== '' ? {} : { 'aria-label': __('Play', 'listen2wp') })}
+						{...(playText && playText !== '' ? {} : { 'aria-label': __('Play', 'Listen2WP') })}
 						type="button"
 						style={{
 							display: 'flex',
@@ -399,7 +399,7 @@ export default function Edit(props) {
 					</button>
 					<button
 						id='l2wp-pause-button'
-						{...(pauseText && pauseText !== '' ? {} : { 'aria-label': __('Pause', 'listen2wp') } )}
+						{...(pauseText && pauseText !== '' ? {} : { 'aria-label': __('Pause', 'Listen2WP') } )}
 						type="button"
 						style={{
 							display: 'flex',
@@ -426,7 +426,7 @@ export default function Edit(props) {
 						{pauseText}</button>
 					<button
 						id='l2wp-resume-button'
-						{...(resumeText && resumeText !== '' ? {} : { 'aria-label': __('Resume', 'listen2wp') })}
+						{...(resumeText && resumeText !== '' ? {} : { 'aria-label': __('Resume', 'Listen2WP') })}
 						type="button"
 						style={{
 							display: 'flex',
@@ -453,7 +453,7 @@ export default function Edit(props) {
 						{resumeText}</button>
 					<button
 						id='l2wp-cancel-button'
-						{...(stopText && stopText !== '' ? {} : { 'aria-label': __('Stop', 'listen2wp') })}
+						{...(stopText && stopText !== '' ? {} : { 'aria-label': __('Stop', 'Listen2WP') })}
 						type="button"
 						style={{
 							display: 'flex',

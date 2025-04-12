@@ -39,12 +39,12 @@ export default function save({attributes}) {
 		<div {...blockProps}>
 			<div
 				role="group"
-				aria-label={__('Text to speech controls', 'listen2wp')}
+				aria-label={__('Text to speech controls', 'Listen2WP')}
 				className="wp-block-rdev-l2wp__buttons"
 				style={{columnGap: columnGap.left}}>
 				<button
 					id='l2wp-play-button'
-					{...(playText && playText !== '' ? {} : {'aria-label': __('Play', 'listen2wp')})}
+					{...(playText && playText !== '' ? {} : {'aria-label': __('Play', 'Listen2WP')})}
 					type="button"
 					style={{
 						display: 'flex',
@@ -71,7 +71,7 @@ export default function save({attributes}) {
 				</button>
 				<button
 					id='l2wp-pause-button'
-					{...(pauseText && pauseText !== '' ? {} : {'aria-label': __('Pause', 'listen2wp')})}
+					{...(pauseText && pauseText !== '' ? {} : {'aria-label': __('Pause', 'Listen2WP')})}
 					type="button"
 					style={{
 						display: 'flex',
@@ -98,7 +98,7 @@ export default function save({attributes}) {
 				</button>
 				<button
 					id='l2wp-resume-button'
-					{...(resumeText && resumeText !== '' ? {} : {'aria-label': __('Resume', 'listen2wp')})}
+					{...(resumeText && resumeText !== '' ? {} : {'aria-label': __('Resume', 'Listen2WP')})}
 					type="button"
 					style={{
 						display: 'flex',
@@ -125,7 +125,7 @@ export default function save({attributes}) {
 				</button>
 				<button
 					id='l2wp-cancel-button'
-					{...(stopText && stopText !== '' ? {} : {'aria-label': __('Stop', 'listen2wp')} )}
+					{...(stopText && stopText !== '' ? {} : {'aria-label': __('Stop', 'Listen2WP')} )}
 					type="button"
 					style={{
 						display: 'flex',
